@@ -1,6 +1,7 @@
-// FITBIT CODE FOR REFERENCE
 <?php
 
+
+// FITBIT CODE FOR REFERENCE
 $curl = curl_init();
 $curlArray = array(
     CURLOPT_RETURNTRANSFER => true, 
