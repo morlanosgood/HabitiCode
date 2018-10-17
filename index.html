@@ -50,7 +50,6 @@
                       <br>
                       <h6>Problems Attempted Today: <span id="attempted"></span></h6>
                       <h6>Problems Solved Today: <span id="solved"></span></h6>
-                      <h6>Miles Walked Today: <span id="miles"></span></h6>
                     <br>
                     <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br>
                 </div>
