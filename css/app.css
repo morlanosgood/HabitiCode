@@ -1,1 +1,36 @@
+html,body{
+  height:100%;
+}
 
+.bg-purple{
+  background-color: #432874;
+}
+
+.text-purple{
+  color: #432874;
+}
+
+.text-lavender{
+  color: #c3b6de;
+}
+
+.bg-lavender{
+  background-color: #edecee;
+  /* outline: 2px solid #432874; */
+  /* width: 200px;
+  height: 150px; */
+  border: 1px solid #aba8bd;
+}
+.left-curve{
+  border-radius: 15px 0px 0px 15px;
+  border: 2px solid #edecee;
+  /* padding: 20px; */
+}
+.right-curve{
+  border-radius: 1px 25px 15px 0px;
+  border: 2px solid #edecee;
+  /* padding: 20px; */
+}
+.square{
+  border-radius: 0px 0px 0px 0px;
+}
