@@ -71,6 +71,7 @@ $(document).ready(function() {
 
         //upon Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
+          console.log("submit registered")
           //store usern id & api token
           if($('#user_id').val() && $('#api_token').val()){
               localStorage.hab_user_id  = $('#user_id').val();
