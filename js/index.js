@@ -68,7 +68,7 @@ $(document).ready(function() {
    //              localStorage.clear();
    //          }
    //     });
-
+        console.log("index.js is running")
         //upon Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered")
@@ -93,7 +93,6 @@ $(document).ready(function() {
                   $('#hab_output').html('api info updated');
                   $('#hab_output').fadeIn();
                   $('#hab_output').fadeOut(5000);
-
               }
           }else{
               $('#hab_output').html('please fill out both fields!');
