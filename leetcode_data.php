@@ -2,6 +2,7 @@
 
 
 // FITBIT CODE FOR REFERENCE
+/*
 $curl = curl_init();
 $curlArray = array(
     CURLOPT_RETURNTRANSFER => true, 
@@ -17,5 +18,41 @@ $resp = curl_exec($curl);
 
 curl_close($curl);
 echo $resp;
+*/
 
+//LEETCODE CODE FOR REFERENCE
+/*plugin.signin = function(user, cb) {
+  log.debug('running leetcode.signin');
+  const spin = h.spin('Signing in leetcode.com');
+  request(config.sys.urls.login, function(e, resp, body) {
+    spin.stop();
+    e = checkError(e, resp, 200);
+    if (e) return cb(e);
+
+    user.loginCSRF = h.getSetCookieValue(resp, 'csrftoken');
+
+    const opts = {
+      url:     config.sys.urls.login,
+      headers: {
+        Origin:  config.sys.urls.base,
+        Referer: config.sys.urls.login,
+        Cookie:  'csrftoken=' + user.loginCSRF + ';'
+      },
+      form: {
+        csrfmiddlewaretoken: user.loginCSRF,
+        login:               user.login,
+        password:            user.pass
+      }
+    };
+    request.post(opts, function(e, resp, body) {
+      if (e) return cb(e);
+      if (resp.statusCode !== 302) return cb('invalid password?');
+
+      user.sessionCSRF = h.getSetCookieValue(resp, 'csrftoken');
+      user.sessionId = h.getSetCookieValue(resp, 'LEETCODE_SESSION');
+      session.saveUser(user);
+      return cb(null, user);
+    });
+  });
+};*/
 ?>
