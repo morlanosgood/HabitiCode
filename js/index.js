@@ -360,4 +360,4 @@ $(document).ready(function() {
 //     function isInt(n) {
 //        return n % 1 === 0;
 //     }
-// });
+ });
