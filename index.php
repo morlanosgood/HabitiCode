@@ -85,8 +85,23 @@
                     </div>
                   </div>
                   <h5 class="btn btn-secondary" id="update_submit">Submit</h5>
+                  <br>
+                    <h3 id="up_output" style="display:none"></h3>
+                    <hr>
+                    <div class="hab_stats">
+                      <h2>Habitica Stats:</h2>
+                      <h4 >User: <span id="hab_name"></span></h4>
+                      <h4 >Class: <span id="hab_class"></span></h4>
+                      <h4 >Level: <span id="hab_level"></span></h4>
+
+                      <h4>XP:</h4>
+                      <div class="progress">
+                          <div id="hab_xp_bar" class="progress-bar" role="progressbar" style="width: 20%;">
+                            <span id="hab_xp_prog"></span>
+                          </div>
+                      </div>
                   </div>
-                    <!-- <h3 id="up_output" style="display:none"></h3> -->
+                </div>
               <!-- Habitica Column -->
               <div class="col pt-3">
                 <img src="img/habitica_logo.png" class="mx-auto d-block" alt="..." style="max-height: 100px; max-width: 100px;">
@@ -99,7 +114,7 @@
                      <input class="form-control" name="searchTxt" type="password" id="api_token"/><br>
                      <h5 class="btn btn-secondary" id="habitica_info_submit">Submit</h5>
                  </div>
-                 <!-- <h3 id="hab_output" style="display:none"></h3> -->
+                 <h3 id="hab_output" style="display:none"></h3>
               </div>
             </div>
         </div>
