@@ -69,6 +69,7 @@ $(document).ready(function() {
    //          }
    //     });
         console.log(document.body)
+        process.stdout.write('testing outside caLL')
         //upon Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered")
