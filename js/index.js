@@ -68,7 +68,7 @@ $(document).ready(function() {
    //              localStorage.clear();
    //          }
    //     });
-        console.log("index.js is running")
+        console.log(document.body)
         //upon Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered")
