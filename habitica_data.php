@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/habitica/habitica_api.php');
+require_once(__DIR__ . '/api/habitica_api.php');
 
 $params = $_GET['data_params']; //from index.js habitica_do
 $action = $_GET['action']; //from index.js habitica_do
