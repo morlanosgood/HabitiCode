@@ -76,12 +76,33 @@ $(document).ready(function() {
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
 
-              hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok};
               localStorage.hab_stats = habitica_do(hab_params,"get_stats");
+                 $.ajax({
+                 url: 'https://habitica.com/api/v3/members'.localStorage.hab_user_id,
+                 type: 'GET',
+                 dataType: 'json',
+                 cache: false,
+                 beforeSend: function(xhr){
+                         xhr.setRequestHeader('x-api-user', localStorage.hab_user_id);
+                         xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
+                     },
+                 success: function(data){
+                      console.log("successful ajax request");
+                      if(data == 'ERROR'){
+                        console.log("ran into error");
+                         user_stats = false;
+                      }else{
+                          user_stats = data;
+                      }
+                 },
+                 error: console.log("failed ajax request");
+               });
               user_stats = JSON.parse(localStorage.hab_stats);
               console.log("have user_stats")
-
               console.log(user_stats)
+
+
+
 
               if(!user_stats.success){
                 console.log("something went wrong")
@@ -301,30 +322,30 @@ $(document).ready(function() {
        //      $('#api_token').val('');
        //  }
        // });
-       $.ajax({
-       url: 'https://habitica.com/api/v3/user',
-       type: 'GET',
-       dataType: 'json',
-       cache: false,
-       beforeSend: function(xhr){
-               xhr.setRequestHeader('x-api-user', '78fe0537-c222-465e-97b2-ce683fe99356');
-               xhr.setRequestHeader('x-api-key',  'e852b61d-05e0-43a4-afaa-ff54fb706cee');
-           },
-       success: function(data){
-            if(data == 'ERROR'){
-              console.log("ran into error")
-               return_val = false;
-            }else{
-                return_val = data;
-            }
-       }
-     });
-      $('#user_id').val('');
-      $('#api_token').val('');
-       console.log(return_val);
-       console.log(JSON.parse(return_val));
-       return return_val;
-    }
+    //    $.ajax({
+    //    url: 'https://habitica.com/api/v3/user',
+    //    type: 'GET',
+    //    dataType: 'json',
+    //    cache: false,
+    //    beforeSend: function(xhr){
+    //            xhr.setRequestHeader('x-api-user', '78fe0537-c222-465e-97b2-ce683fe99356');
+    //            xhr.setRequestHeader('x-api-key',  'e852b61d-05e0-43a4-afaa-ff54fb706cee');
+    //        },
+    //    success: function(data){
+    //         if(data == 'ERROR'){
+    //           console.log("ran into error")
+    //            return_val = false;
+    //         }else{
+    //             return_val = data;
+    //         }
+    //    }
+    //  });
+    //   $('#user_id').val('');
+    //   $('#api_token').val('');
+    //    console.log(return_val);
+    //    console.log(JSON.parse(return_val));
+    //    return return_val;
+    // }
 
 
     //keep checkboxs updated on page refresh
