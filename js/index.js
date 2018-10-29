@@ -87,22 +87,18 @@ $(document).ready(function() {
                          xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
                      },
                  success: function(data){
-                      console.log("successful ajax request");
+                      console.log("successful ajax call")
                       if(data == 'ERROR'){
-                        console.log("ran into error");
+                        console.log("ran into error")
                          user_stats = false;
                       }else{
                           user_stats = data;
                       }
-                 },
-                 error: funtion(){console.log("failed ajax request")}
+                 }
                });
               user_stats = JSON.parse(localStorage.hab_stats);
               console.log("have user_stats")
               console.log(user_stats)
-
-
-
 
               if(!user_stats.success){
                 console.log("something went wrong")
