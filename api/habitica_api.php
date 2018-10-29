@@ -115,7 +115,7 @@ class Habitica{
 	 */
 
 	public function userStats() {
-		console.log(apiURL."/members/".$userId);
+		error_log(apiURL."/members/".$userId);
 		return $this->curl($this->apiURL."/members/".$userId,"GET",NULL);
 	}
 
@@ -182,7 +182,7 @@ class Habitica{
 	 */
 
 	private function curl($endpoint,$curlType,$postBody) {
-		console.log($endpoint)
+		error_log($endpoint);
 		$curl = curl_init();
 		$curlArray = array(
 							CURLOPT_RETURNTRANSFER => true,
