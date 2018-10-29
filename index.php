@@ -88,7 +88,7 @@
                   <br>
                     <h3 id="up_output" style="display:none"></h3>
                     <hr>
-                    <div class="hab_stats">
+                    <div class="hab_stats" style:"display:none">
                       <h2>Habitica Stats:</h2>
                       <h4 >User: <span id="hab_name"></span></h4>
                       <h4 >Class: <span id="hab_class"></span></h4>
