@@ -28,8 +28,8 @@ $(document).ready(function() {
                            console.log(data);
                        }
                   }
-                });
-              ).done(
+                })
+              ).done(function(){
                   user_stats = JSON.parse(localStorage.hab_stats);
                   console.log("have user_stats");
                   console.log(user_stats);
@@ -47,11 +47,12 @@ $(document).ready(function() {
                       $('#hab_output').fadeIn();
                       $('#hab_output').fadeOut(5000);
                   }
-              }else{
-                  $('#hab_output').html('please fill out both fields!');
-                  $('#hab_output').fadeIn();
-                  $('#hab_output').fadeOut(5000);
-              });
-        event.preventDefault();
-        });
+            });
+            event.preventDefault();
+      }else{
+          $('#hab_output').html('please fill out both fields!');
+          $('#hab_output').fadeIn();
+          $('#hab_output').fadeOut(5000);
+        }
+     });
  });
