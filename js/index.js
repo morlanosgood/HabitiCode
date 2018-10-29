@@ -95,7 +95,7 @@ $(document).ready(function() {
                           user_stats = data;
                       }
                  },
-                 error: console.log("failed ajax request");
+                 error: funtion(){console.log("failed ajax request")}
                });
               user_stats = JSON.parse(localStorage.hab_stats);
               console.log("have user_stats")
