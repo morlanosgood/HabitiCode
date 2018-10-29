@@ -323,6 +323,7 @@ $(document).ready(function() {
     //
     //loads habitica user data (does not include goals)
     function update_habitica_html(user_stats){
+        console.log("i am in update habitica html")
         $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
         $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
         $('#hab_level').html(user_stats.habitRPGData.data.stats.lvl);
