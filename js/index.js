@@ -79,8 +79,9 @@ $(document).ready(function() {
               hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok};
               localStorage.hab_stats = habitica_do(hab_params,"get_stats");
               user_stats = JSON.parse(localStorage.hab_stats);
+              console.log("have user_stats")
 
-              console.log(user_stats);
+              console.log(user_stats)
 
               if(user_stats.error){
                   $('#hab_output').html(user_stats.error);
