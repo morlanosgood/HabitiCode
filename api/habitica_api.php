@@ -115,7 +115,7 @@ class Habitica{
 	 */
 
 	public function userStats() {
-		return $this->curl($this->apiURL."/user","GET",NULL);
+		return $this->curl($this->apiURL."/members/".$userId,"GET",NULL);
 	}
 
 	/**
