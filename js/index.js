@@ -76,9 +76,6 @@ $(document).ready(function() {
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
 
-              console.log(localStorage.hab_user_id);
-              console.log(localStorage.hab_api_tok);
-
               hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok};
               localStorage.hab_stats = habitica_do(hab_params,"get_stats");
               user_stats = JSON.parse(localStorage.hab_stats);
@@ -289,21 +286,40 @@ $(document).ready(function() {
     function habitica_do(params, action){
       console.log("I'm in habitica_do");
        return_val = false;
+       // $.ajax({
+       //  url:'habit_data.php',
+       //  data:{data_params: params, action: action},
+       //  async: false,
+       //  success: function(data){
+       //      if(data == 'ERROR'){
+       //        console.log("ran into error")
+       //         return_val = false;
+       //      }else{
+       //          return_val = data;
+       //      }
+       //      $('#user_id').val('');
+       //      $('#api_token').val('');
+       //  }
+       // });
        $.ajax({
-        url:'habit_data.php',
-        data:{data_params: params, action: action},
-        async: false,
-        success: function(data){
+       url: 'https://habitica.com/api/v3/user',
+       type: 'GET',
+       dataType: 'json',
+       cache: false,
+       beforeSend: function(xhr){
+               xhr.setRequestHeader('x-api-user', '78fe0537-c222-465e-97b2-ce683fe99356');
+               xhr.setRequestHeader('x-api-key',  'e852b61d-05e0-43a4-afaa-ff54fb706cee');
+           },
+       success: function(data){
             if(data == 'ERROR'){
               console.log("ran into error")
                return_val = false;
             }else{
                 return_val = data;
             }
-            $('#user_id').val('');
-            $('#api_token').val('');
-        }
-       });
+   });
+      $('#user_id').val('');
+      $('#api_token').val('');
        console.log(return_val);
        console.log(JSON.parse(return_val));
        return return_val;
