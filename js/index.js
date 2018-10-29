@@ -83,11 +83,13 @@ $(document).ready(function() {
 
               console.log(user_stats)
 
-              if(user_stats.error){
+              if(!user_stats.success){
+                console.log("something went wrong")
                   $('#hab_output').html(user_stats.error);
                   $('#hab_output').fadeIn();
                   $('#hab_output').fadeOut(5000);
               }else{
+                  console.log("something went right")
                   update_habitica_html(user_stats);
 
                   $('#hab_output').html('api info updated');
