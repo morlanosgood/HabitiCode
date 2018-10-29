@@ -7,15 +7,16 @@ $(document).ready(function() {
           if($('#user_id').val() && $('#api_token').val()){
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
+              console.log('https://habitica.com/api/v3/members/'+ localSorage.hab_user_id);
                  $.ajax({
                  url: 'https://habitica.com/api/v3/members/'+ localSorage.hab_user_id,
                  type: 'GET',
                  dataType: 'json',
                  cache: false,
-                 beforeSend: function(xhr){
-                         xhr.setRequestHeader('x-api-user', localStorage.hab_user_id);
-                         xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
-                     },
+                 // beforeSend: function(xhr){
+                 //         xhr.setRequestHeader('x-api-user', localStorage.hab_user_id);
+                 //         xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
+                 //     },
                  success: function(data){
                       console.log("successful ajax call")
                       if(data == 'ERROR'){
@@ -27,8 +28,8 @@ $(document).ready(function() {
                  }
                });
               user_stats = JSON.parse(localStorage.hab_stats);
-              console.log("have user_stats")
-              console.log(user_stats)
+              console.log("have user_stats");
+              console.log(user_stats);
 
               if(!user_stats.success){
                 console.log("something went wrong")
