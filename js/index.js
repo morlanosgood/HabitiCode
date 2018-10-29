@@ -83,9 +83,9 @@ $(document).ready(function() {
 
               console.log(user_stats)
 
-              if(!user_stats.success){
+              if(user_stats.error){
                 console.log("something went wrong")
-                  $('#hab_output').html(user_stats.error);
+                  $('#hab_output').html(user_stats.error.message);
                   $('#hab_output').fadeIn();
                   $('#hab_output').fadeOut(5000);
               }else{
