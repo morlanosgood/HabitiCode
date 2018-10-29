@@ -317,7 +317,8 @@ $(document).ready(function() {
             }else{
                 return_val = data;
             }
-   });
+       }
+     });
       $('#user_id').val('');
       $('#api_token').val('');
        console.log(return_val);
