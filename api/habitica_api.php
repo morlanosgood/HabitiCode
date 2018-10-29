@@ -116,7 +116,7 @@ class Habitica{
 
 	public function userStats() {
 		console_log($apiURL."/members/".$userId);
-		return $this->curl($this->$apiURL."/members/".$userId,"GET",NULL);
+		return $this->curl($this->apiURL."/user","GET",NULL);
 	}
 
 	/**
@@ -192,7 +192,8 @@ class Habitica{
 														"Content-type: application/json",
 														"x-api-user:".$this->userId,
 														"x-api-key:".$this->apiToken),
-							CURLOPT_URL => "https://habitica.com/api/v3/members/78fe0537-c222-465e-97b2-ce683fe99356");
+							CURLOPT_URL => $endpoint);
+
 		switch($curlType) {
 			case "POST":
 				$curlArray[CURLOPT_POSTFIELDS] = $postBody;
