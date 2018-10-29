@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
    //Data we need:
    //Fitbit Implicit Grant data: (scope, user_id, token_type, auth_token)
    //Habitica Api data (user_id, api_token, task_name)

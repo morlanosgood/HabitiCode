@@ -2,7 +2,7 @@
 <html lang="en">
       <head>
        <title>HabitiCode</title>
-         <script src="js/jquery-2.1.4.min.js"></script>
+         <script src="js/jquery-3.3.1.min.js"></script>
          <script src="js/bootstrap.min.js"></script>
          <script src="js/index.js"></script>
          <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
