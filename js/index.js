@@ -81,7 +81,7 @@ $(document).ready(function() {
               user_stats = JSON.parse(localStorage.hab_stats);
               console.log("have user_stats")
 
-              console.log(user_stats)
+              console.log(user_stats.habitRPGData)
 
               if(user_stats.error){
                   $('#hab_output').html(user_stats.error);
