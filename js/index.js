@@ -67,8 +67,7 @@ $(document).ready(function() {
    //              localStorage.clear();
    //          }
    //     });
-        console.log(document.body)
-        process.stdout.write('testing outside caLL')
+        console.log("outside call")
         //upon Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered")
