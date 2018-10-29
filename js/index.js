@@ -8,6 +8,7 @@ $(document).ready(function() {
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
               console.log('https://habitica.com/api/v3/members/'+ localStorage.hab_user_id);
+              var user_stats;
                 $.ajax({
                   url: 'https://habitica.com/api/v3/members/'+ localStorage.hab_user_id,
                   type: 'GET',
