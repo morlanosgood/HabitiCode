@@ -81,7 +81,7 @@ $(document).ready(function() {
               user_stats = JSON.parse(localStorage.hab_stats);
               console.log("have user_stats")
 
-              console.log(user_stats.habitRPGData)
+              console.log(user_stats)
 
               if(user_stats.error){
                   $('#hab_output').html(user_stats.error);
@@ -324,16 +324,16 @@ $(document).ready(function() {
     //loads habitica user data (does not include goals)
     function update_habitica_html(user_stats){
         console.log("i am in update habitica html")
-        $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
-        $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
-        $('#hab_level').html(user_stats.habitRPGData.data.stats.lvl);
+        $('#hab_name').html(user_stats.data.profile.name);
+        $('#hab_class').html(user_stats.data.stats.class);
+        $('#hab_level').html(user_stats.data.stats.lvl);
 
         $('#hab_name').fadeIn();
         $('#hab_class').fadeIn();
         $('#hab_level').fadeIn();
 
-          $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
-        $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
+          $('#hab_xp_bar').css("width",(user_stats.data.stats.exp/user_stats.data.stats.toNextLevel)*100 + "%");
+        $('#hab_xp_prog').html(user_stats.data.stats.exp + "/" + user_stats.data.stats.toNextLevel);
     }
 
     //
