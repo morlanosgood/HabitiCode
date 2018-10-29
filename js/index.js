@@ -7,9 +7,9 @@ $(document).ready(function() {
           if($('#user_id').val() && $('#api_token').val()){
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
-              console.log('https://habitica.com/api/v3/members/'+ localSorage.hab_user_id);
+              console.log('https://habitica.com/api/v3/members/'+ localStorage.hab_user_id);
                  $.ajax({
-                 url: 'https://habitica.com/api/v3/members/'+ localSorage.hab_user_id,
+                 url: 'https://habitica.com/api/v3/members/'+ localStorage.hab_user_id,
                  type: 'GET',
                  dataType: 'json',
                  cache: false,
