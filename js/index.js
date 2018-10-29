@@ -8,49 +8,50 @@ $(document).ready(function() {
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
               console.log('https://habitica.com/api/v3/members/'+ localStorage.hab_user_id);
-                 $.ajax({
-                 url: 'https://habitica.com/api/v3/members/'+ localStorage.hab_user_id,
-                 type: 'GET',
-                 dataType: 'json',
-                 cache: false,
-                 // beforeSend: function(xhr){
-                 //         xhr.setRequestHeader('x-api-user', localStorage.hab_user_id);
-                 //         xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
-                 //     },
-                 success: function(data){
-                      console.log("successful ajax call")
-                      if(data == 'ERROR'){
-                        console.log("ran into error")
-                         user_stats = false;
-                      }else{
-                          user_stats = data;
-                          console.log(data);
-                      }
-                 }
-               });
-              user_stats = JSON.parse(localStorage.hab_stats);
-              console.log("have user_stats");
-              console.log(user_stats);
+              $.when(
+                $.ajax({
+                  url: 'https://habitica.com/api/v3/members/'+ localStorage.hab_user_id,
+                  type: 'GET',
+                  dataType: 'json',
+                  cache: false,
+                  // beforeSend: function(xhr){
+                  //         xhr.setRequestHeader('x-api-user', localStorage.hab_user_id);
+                  //         xhr.setRequestHeader('x-api-key',    localStorage.hab_api_tok);
+                  //     },
+                  success: function(data){
+                       console.log("successful ajax call")
+                       if(data == 'ERROR'){
+                         console.log("ran into error")
+                          user_stats = false;
+                       }else{
+                           user_stats = data;
+                           console.log(data);
+                       }
+                  }
+                });
+              ).done(
+                  user_stats = JSON.parse(localStorage.hab_stats);
+                  console.log("have user_stats");
+                  console.log(user_stats);
 
-              if(!user_stats.success){
-                console.log("something went wrong")
-                  $('#hab_output').html(user_stats.message);
-                  $('#hab_output').fadeIn();
-                  $('#hab_output').fadeOut(5000);
+                  if(!user_stats.success){
+                    console.log("something went wrong")
+                      $('#hab_output').html(user_stats.message);
+                      $('#hab_output').fadeIn();
+                      $('#hab_output').fadeOut(5000);
+                  }else{
+                      console.log("something went right")
+                      update_habitica_html(user_stats);
+
+                      $('#hab_output').html('api info updated');
+                      $('#hab_output').fadeIn();
+                      $('#hab_output').fadeOut(5000);
+                  }
               }else{
-                  console.log("something went right")
-                  update_habitica_html(user_stats);
-
-                  $('#hab_output').html('api info updated');
+                  $('#hab_output').html('please fill out both fields!');
                   $('#hab_output').fadeIn();
                   $('#hab_output').fadeOut(5000);
-              }
-          }else{
-              $('#hab_output').html('please fill out both fields!');
-              $('#hab_output').fadeIn();
-              $('#hab_output').fadeOut(5000);
-          }
-
-          event.preventDefault();
+              });
+        event.preventDefault();
         });
  });
