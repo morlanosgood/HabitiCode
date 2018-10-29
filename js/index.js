@@ -24,7 +24,6 @@ $(document).ready(function() {
                           user_stats = false;
                        }else{
                            user_stats = data;
-                           console.log(data);
                        }
                   }
                 });
