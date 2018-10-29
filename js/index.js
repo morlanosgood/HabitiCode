@@ -83,7 +83,7 @@ $(document).ready(function() {
 
               console.log(user_stats)
 
-              if(user_stats.error){
+              if(!user_stats.success){
                 console.log("something went wrong")
                   $('#hab_output').html(user_stats.error.message);
                   $('#hab_output').fadeIn();
@@ -284,6 +284,7 @@ $(document).ready(function() {
     // get_stats required variables: user_id (string), api_tok (string)
     // sends data_params and action to habitia_data.php to use
     function habitica_do(params, action){
+      console.log("I'm in habitica_do");
        return_val = false;
        $.ajax({
         url:'habit_data.php',
@@ -299,6 +300,8 @@ $(document).ready(function() {
             $('#api_token').val('');
         }
        });
+       console.log(return_val);
+       console.log(JSON.parse(return_val));
        return return_val;
     }
 
