@@ -111,7 +111,8 @@
                       <input  class="form-control" type="text" id="user_id"/>
                       <br>
                       <label class="control-label">API Token</label>
-                     <input class="form-control" name="searchTxt" type="password" id="api_token"/><br>
+                     <input class="form-control" name="searchTxt" type="password" id="api_token"/>
+                     <br>
                      <h5 class="btn btn-secondary" id="habitica_info_submit">Submit</h5>
                  </div>
                  <h3 id="hab_output" style="display:none"></h3>
