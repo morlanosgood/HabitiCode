@@ -30,7 +30,7 @@ $(document).ready(function() {
                   }
                 })
               ).done(function(){
-                  user_stats = JSON.parse(localStorage.hab_stats);
+                  user_stats = JSON.parse(user_stats);
                   console.log("have user_stats");
                   console.log(user_stats);
 
