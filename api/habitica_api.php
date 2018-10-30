@@ -115,7 +115,7 @@ class Habitica{
 	 */
 
 	public function userStats() {
-		 echo '<script>console.log("user stats call")</script>';
+		console_log("api method");
 		return $this->curl($this->apiURL."/members/".$userId,"GET",NULL);
 	}
 
@@ -230,6 +230,12 @@ class Habitica{
 			return array("error"=>$habitRPGResponse['err'],"details"=>array("httpCode"=>$habitRPGHTTPCode,"endpoint"=>$endpoint,"dataSent"=>json_decode($postBody,true)));
 		}
 	}
+	//logging method to print to console
+	function console_log( $data ){
+	  echo '<script>';
+	  echo 'console.log('. json_encode( $data ) .')';
+	  echo '</script>';
 	}
-}
+
+	}
 ?>
