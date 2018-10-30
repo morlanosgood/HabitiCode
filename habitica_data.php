@@ -21,7 +21,8 @@ if($action == 'change_habit'){
       }
 }else if($action == 'get_stats'){
     console_log("call api");
-    echo json_encode($habit->userStats());
+    // echo json_encode($habit->userStats());
+    echo "hello world"
 }
 
 
