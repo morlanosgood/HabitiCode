@@ -22,14 +22,14 @@ $(document).ready(function() {
                        console.log("successful ajax call")
                        if(data == 'ERROR'){
                          console.log("ran into error")
-                          user_stats = false;
+                          localStorage.user_stats = false;
                        }else{
-                           user_stats = data;
+                           localStorage.user_stats = data;
                        }
                   }
                 })
               ).done(function(){
-                  user_stats = JSON.parse(user_stats);
+                  user_stats = JSON.parse(localStorage.user_stats);
                   console.log("have user_stats");
                   console.log(user_stats);
 
