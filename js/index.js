@@ -8,7 +8,7 @@ $(document).ready(function() {
               localStorage.hab_user_id  = $('#user_id').val();
               localStorage.hab_api_tok = $('#api_token').val();
               console.log('https://habitica.com/api/v3/members/'+ localStorage.hab_user_id);
-              var user_stats;
+              $.when(
                 $.ajax({
                   url: 'https://habitica.com/api/v3/members/'+ localStorage.hab_user_id,
                   type: 'GET',
@@ -25,9 +25,11 @@ $(document).ready(function() {
                           user_stats = false;
                        }else{
                            user_stats = data;
+                           console.log(data);
                        }
                   }
-                });
+                })
+              ).done(function(){
                   user_stats = JSON.parse(user_stats);
                   console.log("have user_stats");
                   console.log(user_stats);
@@ -45,11 +47,12 @@ $(document).ready(function() {
                       $('#hab_output').fadeIn();
                       $('#hab_output').fadeOut(5000);
                   }
-          }else{
-              $('#hab_output').html('please fill out both fields!');
-              $('#hab_output').fadeIn();
-              $('#hab_output').fadeOut(5000);
-            }
-        event.preventDefault();
+            });
+            event.preventDefault();
+      }else{
+          $('#hab_output').html('please fill out both fields!');
+          $('#hab_output').fadeIn();
+          $('#hab_output').fadeOut(5000);
+        }
      });
  });
