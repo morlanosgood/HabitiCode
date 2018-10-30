@@ -20,6 +20,7 @@ if($action == 'change_habit'){
           echo 'ERROR';
       }
 }else if($action == 'get_stats'){
+    echo '<script>console.log("api call")</script>';
     echo json_encode($habit->userStats());
 }
 ?>

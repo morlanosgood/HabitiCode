@@ -115,8 +115,8 @@ class Habitica{
 	 */
 
 	public function userStats() {
-		console_log($apiURL."/members/".$userId);
-		return $this->curl($this->apiURL."/user","GET",NULL);
+		 echo '<script>console.log("user stats call")</script>';
+		return $this->curl($this->apiURL."/members/".$userId,"GET",NULL);
 	}
 
 	/**
@@ -182,6 +182,7 @@ class Habitica{
 	 */
 
 	private function curl($endpoint,$curlType,$postBody) {
+		 echo '<script>console.log("curl started")</script>';
 		console_log($endpoint);
 		$curl = curl_init();
 		$curlArray = array(
@@ -220,18 +221,15 @@ class Habitica{
 		curl_close($curl);
 
 		if ($habitRPGHTTPCode == 200) {
+			 echo '<script>console.log("curl successful")</script>';
 			return array("result"=>true,"habitRPGData"=>json_decode($habitRPGResponse,true));
 		}
 		else {
+			 echo '<script>console.log("curl failed")</script>';
 		$habitRPGResponse = json_decode($habitRPGResponse,true);
 			return array("error"=>$habitRPGResponse['err'],"details"=>array("httpCode"=>$habitRPGHTTPCode,"endpoint"=>$endpoint,"dataSent"=>json_decode($postBody,true)));
 		}
 	}
-
-	function console_log( $data ){
-  echo '<script>';
-  echo 'console.log('. json_encode( $data ) .')';
-  echo '</script>';
 	}
 }
 ?>
