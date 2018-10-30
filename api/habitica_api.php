@@ -1,8 +1,7 @@
 <?php
 	/*
      * ORIGINAL AUTHOR: RUDD FAWCETT
-     * COPIED FROM: DARIUS LAM
-     * MODIFIED BY: MORLAN OSGOOD
+     * MODIFIED BY: DARIUS LAM
      * COMPATIBLE WITH HABITICA API V3
 	 */
 
@@ -115,8 +114,7 @@ class Habitica{
 	 */
 
 	public function userStats() {
-		console_log("api method");
-		return $this->curl($this->apiURL."/members/".$userId,"GET",NULL);
+		return $this->curl($this->apiURL."/user","GET",NULL);
 	}
 
 	/**
@@ -182,8 +180,6 @@ class Habitica{
 	 */
 
 	private function curl($endpoint,$curlType,$postBody) {
-		 echo '<script>console.log("curl started")</script>';
-		console_log($endpoint);
 		$curl = curl_init();
 		$curlArray = array(
 							CURLOPT_RETURNTRANSFER => true,
@@ -191,11 +187,9 @@ class Habitica{
 							//CURLOPT_ENCODING => "gzip",
 							CURLOPT_HTTPHEADER => array(
 														"Content-type: application/json",
-														// "x-api-user:".$this->userId,
-														// "x-api-key:".$this->apiToken
-													),
+														"x-api-user:".$this->userId,
+														"x-api-key:".$this->apiToken),
 							CURLOPT_URL => $endpoint);
-
 		switch($curlType) {
 			case "POST":
 				$curlArray[CURLOPT_POSTFIELDS] = $postBody;
@@ -222,21 +216,12 @@ class Habitica{
 		curl_close($curl);
 
 		if ($habitRPGHTTPCode == 200) {
-			 echo '<script>console.log("curl successful")</script>';
 			return array("result"=>true,"habitRPGData"=>json_decode($habitRPGResponse,true));
 		}
 		else {
-			 echo '<script>console.log("curl failed")</script>';
 		$habitRPGResponse = json_decode($habitRPGResponse,true);
 			return array("error"=>$habitRPGResponse['err'],"details"=>array("httpCode"=>$habitRPGHTTPCode,"endpoint"=>$endpoint,"dataSent"=>json_decode($postBody,true)));
 		}
 	}
-	//logging method to print to console
-	function console_log( $data ){
-	  echo '<script>';
-	  echo 'console.log('. json_encode( $data ) .')';
-	  echo '</script>';
-	}
-
-	}
+}
 ?>
