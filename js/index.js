@@ -285,7 +285,7 @@ $(document).ready(function() {
     function habitica_do(params, action){
        return_val = false;
        $.ajax({
-        url:'habit_data.php',
+        url:'habitica_data.php',
         data:{data_params: params, action: action},
         async: false,
         success: function(data){
