@@ -1,4 +1,3 @@
-
  $(document).ready(function() {
          console.log("outside call")
          //upon Habitica Submit Button clicked
@@ -11,11 +10,27 @@
                hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok};
                localStorage.hab_stats = habitica_do(hab_params,"get_stats");
                user_stats = JSON.parse(localStorage.hab_stats);
-               console.log("have user_stats");
-               console.log(user_stats);
-             }
-           });
-             //
+
+               if(user_stats.error){
+                  $('#hab_output').html(user_stats.error);
+                  $('#hab_output').fadeIn();
+                  $('#hab_output').fadeOut(5000);
+              }else{
+                  update_habitica_html(user_stats);
+
+                  $('#hab_output').html('api info updated');
+                  $('#hab_output').fadeIn();
+                  $('#hab_output').fadeOut(5000);
+              }
+          }else{
+              $('#hab_output').html('please fill out both fields!');
+              $('#hab_output').fadeIn();
+              $('#hab_output').fadeOut(5000);
+          }
+          event.preventDefault();
+        });
+
+
      // Updates habitica habit -- MAKES AJAX CALL
      // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
      // change_habit required variables: task_name (string), direction ('up' | 'down'), user_id (string), api_tok (string)
@@ -30,18 +45,28 @@
          async: false,
          success: function(data){
              if(data == 'ERROR'){
-               console.log("error occurred");
                 return_val = false;
              }else{
                  return_val = data;
-                 console.log("return val   ".return_val);
              }
              $('#user_id').val('');
              $('#api_token').val('');
          }
         });
-        console.log("end ajax call");
-        console.log(return_val);
         return return_val;
      }
+
+     function update_habitica_html(user_stats){
+        $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
+        $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
+        $('#hab_level').html(user_stats.habitRPGData.data.stats.lvl);
+
+        $('#hab_name').fadeIn();
+        $('#hab_class').fadeIn();
+        $('#hab_level').fadeIn();
+
+        $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
+        $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
+    }
+
   });
