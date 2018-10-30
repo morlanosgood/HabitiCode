@@ -29,6 +29,7 @@ $(document).ready(function() {
         async: false,
         success: function(data){
             if(data == 'ERROR'){
+              console.log("error occurred");
                return_val = false;
             }else{
                 return_val = data;
