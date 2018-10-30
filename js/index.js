@@ -32,7 +32,7 @@ $(document).ready(function() {
                return_val = false;
             }else{
                 return_val = data;
-                console.log(return_val);
+                console.log("return val   ".return_val);
             }
             $('#user_id').val('');
             $('#api_token').val('');
