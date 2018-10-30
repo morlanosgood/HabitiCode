@@ -32,6 +32,7 @@ $(document).ready(function() {
                return_val = false;
             }else{
                 return_val = data;
+                console.log(return_val);
             }
             $('#user_id').val('');
             $('#api_token').val('');
@@ -39,6 +40,7 @@ $(document).ready(function() {
         }
        });
        console.log("end ajax call");
+       console.log(return_val);
        return return_val;
     }
  });
