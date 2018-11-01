@@ -2,8 +2,9 @@
 
 $cookieJar = tempnam('', 'cookie.txt');
 
-$user = $_GET['username'];
-$pass = $_GET['password'];
+$params = $_GET['data_params'];
+$user = $params['username'];
+$pass = $params['password'];
 
 // login to LeetCode
 $curl = curl_init();
