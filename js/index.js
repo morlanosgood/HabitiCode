@@ -88,6 +88,9 @@
              }
              $('#user_id').val('');
              $('#api_token').val('');
+         },
+         error: function(data){
+           console.log("ERROR WITH AJAX CALL");
          }
         });
         return return_val;
