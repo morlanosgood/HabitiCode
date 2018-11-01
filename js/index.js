@@ -81,8 +81,10 @@
          success: function(data){
              if(data == 'ERROR'){
                 return_val = false;
+                console.log(return_val);
              }else{
                  return_val = data;
+                 console.log(return_val);
              }
              $('#user_id').val('');
              $('#api_token').val('');
