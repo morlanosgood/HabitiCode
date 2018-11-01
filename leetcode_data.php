@@ -1,11 +1,29 @@
 <?php
 
+$user = $_GET['username'];
+$pass = $_GET['password'];
+
+
+$curl = curl_init();
+$curlArray = array(
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER => false,
+    CURLOPT_HTTPHEADER => array(
+      "Content-type: application/json"),
+    CURLOPT_URL => "https://leetcode.com/api/submissions/");
+
+curl_setopt_array($curl, $curlArray);
+$submissions = curl_exec($curl);
+curl_close($curl);
+
+echo $submissions
+
 
 // FITBIT CODE FOR REFERENCE
 /*
 $curl = curl_init();
 $curlArray = array(
-    CURLOPT_RETURNTRANSFER => true, 
+    CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HEADER => false,
     CURLOPT_HTTPHEADER => array(
         "Content-type: application/json",

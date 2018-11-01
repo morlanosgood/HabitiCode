@@ -1,6 +1,6 @@
  $(document).ready(function() {
-         console.log("outside call")
-         //upon Habitica Submit Button clicked
+
+         //when Habitica Submit Button clicked
          $("#habitica_info_submit").click(function( event ) {
            console.log("submit registered")
            //store user id & api token
@@ -30,15 +30,26 @@
           event.preventDefault();
         });
 
+      // when LeetCode Submit Button clicked
+       $("#leetcode_info_submit").click(function( event ) {
+         if($('#username').val() && $('#password').val()){
+            console.log("leetcode button clicked & fields populated");
+             localStorage.user = $('#username').val();
+             localStorage.pass = $('#password').val();
+             leet_params = {username: localStorage.user, password: localStorage.pass};
+             localStorage.leet_stats = leetcode_do(leet_params);
+             leet_subs = JSON.parse(localStorage.leet_stats
+             console.log(leet_subs);
+        }
+       });
 
-     // Updates habitica habit -- MAKES AJAX CALL
+     // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
      // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
      // change_habit required variables: task_name (string), direction ('up' | 'down'), user_id (string), api_tok (string)
      // get_stats required variables: user_id (string), api_tok (string)
      //
      function habitica_do(params, action){
-       console.log("start ajax call");
-        return_val = false;
+       console.log("habitica - start ajax call");
         $.ajax({
          url:'habitica_data.php',
          data:{data_params: params, action: action},
@@ -56,6 +67,29 @@
         return return_val;
      }
 
+     // Gets LeetCode submissions by calling leetcode_data.php, getting
+     //  submissions and returning to submit button click
+     function leetcode_do(params){
+       console.log("leetcode - start ajax call");
+        return_val = false;
+        $.ajax({
+         url:'leetcode_data.php',
+         data:{data_params: params},
+         async: false,
+         success: function(data){
+             if(data == 'ERROR'){
+                return_val = false;
+             }else{
+                 return_val = data;
+             }
+             $('#user_id').val('');
+             $('#api_token').val('');
+         }
+        });
+        return return_val;
+     }
+
+     //update site with user stats
      function update_habitica_html(user_stats){
         $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
         $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
@@ -68,5 +102,4 @@
         $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
         $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
     }
-
   });
