@@ -38,7 +38,7 @@
              localStorage.pass = $('#password').val();
              leet_params = {username: localStorage.user, password: localStorage.pass};
              localStorage.leet_stats = leetcode_do(leet_params);
-             leet_subs = JSON.parse(localStorage.leet_stats
+             leet_subs = JSON.parse(localStorage.leet_stats);
              console.log(leet_subs);
         }
        });
