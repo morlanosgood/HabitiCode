@@ -40,12 +40,9 @@
               <div class="col pt-2">
                 <img src="img/leetcode_logo.png" class="mx-auto d-block" alt="..." style="max-height: 100px; max-width: 100px;">
                 <h5 class="text-center">Enter LeetCode Data Here:</h5>
-                <div class="col justify-content-center">
-                  <a href="" class="btn btn-secondary d-block mx-5">Login to LeetCode</a>
-                </div>
                 <div class="container" id="main_view">
                   <div class="row">
-                    <div class="col text-center">
+                    <div class="col">
                       <div class="form-group">
                            <label class="control-label">Username</label>
                            <input  class="form-control" type="text" id="username"/>
@@ -59,7 +56,7 @@
                       <h6>Problems Attempted Today: <span id="attempted"></span></h6>
                       <h6>Problems Solved Today: <span id="solved"></span></h6>
                     <br>
-                    <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br>
+                    <!-- <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br> -->
                 </div>
                 </div>
              </div>

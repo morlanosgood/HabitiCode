@@ -35,7 +35,9 @@
          if($('#username').val() && $('#password').val()){
             console.log("leetcode button clicked & fields populated");
              localStorage.user = $('#username').val();
+             console.log(localStorage.user);
              localStorage.pass = $('#password').val();
+             console.log(localStorage.pass);
              leet_params = {username: localStorage.user, password: localStorage.pass};
              localStorage.leet_stats = leetcode_do(leet_params);
              leet_subs = JSON.parse(localStorage.leet_stats);

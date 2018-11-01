@@ -1,24 +1,42 @@
 <?php
 
+$cookieJar = tempnam('', 'cookie.txt');
+
 $user = $_GET['username'];
 $pass = $_GET['password'];
 
-
+// login to LeetCode
 $curl = curl_init();
 $curlArray = array(
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HEADER => false,
-    CURLOPT_HTTPHEADER => array(
-      "Content-type: application/json"),
-    CURLOPT_URL => "https://leetcode.com/api/submissions/");
+    CURLOPT_HTTPHEADER => "Content-type: application/json",
+    CURLOPT_URL => "https://leetcode.com/accounts/login/",
+    CURLOPT_COOKIEJAR => $cookieJar,
+    CURLOPT_POST => 2,
+    CURLOPT_POSTFIELDS => array(
+      'login': $user,
+      'password': $pass)
+  );
+curl_setopt_array($curl, $curlArray);
+$log = curl_exec($curl);
+curl_close($curl);
+
+//Get Submissions
+$curl = curl_init();
+$curlArray = array(
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER => false,
+    CURLOPT_HTTPHEADER => "Content-type: application/json",
+    CURLOPT_URL => "https://leetcode.com/api/submissions/",
+    CURLOPT_COOKIEFILE => $cookieJar);
 
 curl_setopt_array($curl, $curlArray);
 $submissions = curl_exec($curl);
 curl_close($curl);
+echo $submissions;
 
-echo $submissions
-
-
+//https://leetcode.com/api/submissions/
 // FITBIT CODE FOR REFERENCE
 /*
 $curl = curl_init();
