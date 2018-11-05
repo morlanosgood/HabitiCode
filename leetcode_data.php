@@ -1,58 +1,60 @@
 <?php
 
-$cookieJar = tempnam('', 'cookie.txt');
+// $cookieJar = tempnam('', 'cookie.txt');
+//
+// $params = $_GET['data_params'];
+// $user = $params['username'];
+// $pass = $params['password'];
+//
+// // login to LeetCode
+// $curl = curl_init();
+// debug_to_console("login start");
+// $curlArray = array(
+//     CURLOPT_RETURNTRANSFER => true,
+//     CURLOPT_HEADER => false,
+//     CURLOPT_HTTPHEADER => "Content-type: application/json",
+//     CURLOPT_URL => "https://leetcode.com/accounts/login/",
+//     CURLOPT_COOKIEJAR => $cookieJar,
+//     CURLOPT_POST => 2,
+//     CURLOPT_POSTFIELDS => array(
+//       'login': $user,
+//       'password': $pass)
+//   );
+// curl_setopt_array($curl, $curlArray);
+// $log = curl_exec($curl);
+// debug_to_console("login end");
+// debug_to_console($log);
+// curl_close($curl);
+// echo "yes";
+//
 
-$params = $_GET['data_params'];
-$user = $params['username'];
-$pass = $params['password'];
-
-// login to LeetCode
-$curl = curl_init();
-debug_to_console("login start");
-$curlArray = array(
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HEADER => false,
-    CURLOPT_HTTPHEADER => "Content-type: application/json",
-    CURLOPT_URL => "https://leetcode.com/accounts/login/",
-    CURLOPT_COOKIEJAR => $cookieJar,
-    CURLOPT_POST => 2,
-    CURLOPT_POSTFIELDS => array(
-      'login': $user,
-      'password': $pass)
-  );
-curl_setopt_array($curl, $curlArray);
-$log = curl_exec($curl);
-debug_to_console("login end");
-debug_to_console($log);
-curl_close($curl);
-
-//Get Submissions
-$curl = curl_init();
-debug_to_console("get subs start");
-$curlArray = array(
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HEADER => false,
-    CURLOPT_HTTPHEADER => "Content-type: application/json",
-    CURLOPT_URL => "https://leetcode.com/api/submissions/",
-    CURLOPT_COOKIEFILE => $cookieJar);
-
-curl_setopt_array($curl, $curlArray);
-$submissions = curl_exec($curl);
-curl_close($curl);
-debug_to_console("get subs end");
-debug_to_console($submissions);
-echo $submissions;
+// //Get Submissions
+// $curl = curl_init();
+// debug_to_console("get subs start");
+// $curlArray = array(
+//     CURLOPT_RETURNTRANSFER => true,
+//     CURLOPT_HEADER => false,
+//     CURLOPT_HTTPHEADER => "Content-type: application/json",
+//     CURLOPT_URL => "https://leetcode.com/api/submissions/",
+//     CURLOPT_COOKIEFILE => $cookieJar);
+//
+// curl_setopt_array($curl, $curlArray);
+// $submissions = curl_exec($curl);
+// curl_close($curl);
+// debug_to_console("get subs end");
+// debug_to_console($submissions);
+// echo $submissions;
 
 
 
 
-function debug_to_console( $data ) {
-    $output = $data;
-    if ( is_array( $output ) )
-        $output = implode( ',', $output);
-
-    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-}
+// function debug_to_console( $data ) {
+//     $output = $data;
+//     if ( is_array( $output ) )
+//         $output = implode( ',', $output);
+//
+//     echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+// }
 
 //https://leetcode.com/api/submissions/
 // FITBIT CODE FOR REFERENCE

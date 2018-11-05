@@ -93,6 +93,7 @@
            console.log("ERROR WITH AJAX CALL");
          }
         });
+        console.log("I have finished the ajax call");
         return return_val;
      }
 
