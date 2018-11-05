@@ -46,15 +46,15 @@
 // echo $submissions;
 
 
+debug_to_console("I am in leetcode data!");
 
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
 
-// function debug_to_console( $data ) {
-//     $output = $data;
-//     if ( is_array( $output ) )
-//         $output = implode( ',', $output);
-//
-//     echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
-// }
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
 
 //https://leetcode.com/api/submissions/
 // FITBIT CODE FOR REFERENCE

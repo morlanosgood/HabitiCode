@@ -94,7 +94,7 @@
          }
         });
         console.log("I have finished the ajax call");
-        return return_val;
+        // return return_val;
      }
 
      //update site with user stats
