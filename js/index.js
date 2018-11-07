@@ -47,7 +47,7 @@
 
        // when LeetCode Submit Button clicked
         $("#login").click(function( event ) {
-          window.open("https://leetcode.com/accounts/login", "MsgWindow", "width=200,height=100");
+          window.open("https://leetcode.com/accounts/login", "", "width=600,height=600");
           console.log("I've hit the leetcode url");
         });
 
