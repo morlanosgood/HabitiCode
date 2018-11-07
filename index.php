@@ -39,11 +39,12 @@
               <!-- LeetCode Column -->
               <div class="col pt-2">
                 <img src="img/leetcode_logo.png" class="mx-auto d-block" alt="..." style="max-height: 100px; max-width: 100px;">
-                <h5 class="text-center">Enter LeetCode Data Here:</h5>
+                <!-- <h5 class="text-center">Enter LeetCode Data Here</h5> -->
+               <a class="btn btn-primary center-block" id="login">Login to LeetCode</a>
                 <div class="container" id="main_view">
                   <div class="row">
                     <div class="col">
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                            <label class="control-label">Username</label>
                            <input  class="form-control" type="text" id="username"/>
                            <br>
@@ -51,12 +52,12 @@
                           <input class="form-control" name="searchTxt" type="password" id="password"/>
                           <br>
                           <h5 class="btn btn-secondary" id="leetcode_info_submit">Submit</h5>
-                      </div>
+                      </div> -->
                       <br>
                       <h6>Problems Attempted Today: <span id="attempted"></span></h6>
                       <h6>Problems Solved Today: <span id="solved"></span></h6>
                     <br>
-                    <!-- <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br> -->
+                    <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br>
                 </div>
                 </div>
              </div>

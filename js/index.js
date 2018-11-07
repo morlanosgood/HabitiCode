@@ -45,6 +45,12 @@
         }
        });
 
+       // when LeetCode Submit Button clicked
+        $("#login").click(function( event ) {
+          window.location = 'https://leetcode.com/accounts/login';
+          console.log("I've hit the leetcode url");
+        });
+
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
      // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
      // change_habit required variables: task_name (string), direction ('up' | 'down'), user_id (string), api_tok (string)
