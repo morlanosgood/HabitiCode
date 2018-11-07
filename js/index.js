@@ -47,8 +47,12 @@
 
        // when LeetCode Submit Button clicked
         $("#login").click(function( event ) {
-          window.open("https://leetcode.com/accounts/login", "", "width=600,height=600");
+          var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
+          if (popup.location.href = "https://leetcode.com/problemset/all/"){
+            popup.close();
+          }
+          //ajax call
         });
 
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
