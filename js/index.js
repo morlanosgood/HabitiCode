@@ -49,7 +49,9 @@
         $("#login").click(function( event ) {
           var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
-          if (popup.location.href = "https://leetcode.com/problemset/all/"){
+          console.log(popup.location.href);
+          if (popup.location.href == "https://leetcode.com/problemset/all/"){
+            console.log("popup.location.href");
             popup.close();
           }
           //ajax call
