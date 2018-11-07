@@ -51,8 +51,9 @@
           console.log("I've hit the leetcode url");
           console.log(popup.location.href);
           $.when(popup.location.href == "https://leetcode.com/problemset/all/").then( function(popup){
-            console.log("popup.location.href");
+            console.log(popup.location.href);
             popup.close();
+            console.log("I've closed the window!");
             //ajax call
           });
         });
