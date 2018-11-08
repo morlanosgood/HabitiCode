@@ -1,5 +1,5 @@
  $(document).ready(function() {
-
+   var popup;
          //when Habitica Submit Button clicked
          $("#habitica_info_submit").click(function( event ) {
            console.log("submit registered")
@@ -45,19 +45,16 @@
         }
        });
 
-       // when LeetCode Submit Button clicked
-        $("#login").click(function( event ) {
-          var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
-          console.log("I've hit the leetcode url");
-          console.log(popup.location.href);
-          $(popup).on('beforeunload', function(){
-            //deal with case when refresh page/go to hyperlink
-            popup.close();
-            console.log("I've closed the window!");
-            //ajax GET call
-            leetcode_do();
-          });
-        });
+       // when LeetCode Login Button clicked
+       $("#login").click(function( event ) {
+            	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
+              console.log("I've hit the leetcode url");
+              console.log(popup.location.href);
+              console.log(typeof popup);
+              console.log(popup.closed);
+              checkPopup();
+            });
+
 
     //LeetCode window closed
 
@@ -110,8 +107,7 @@
          }
         });
         console.log("I have finished the ajax  lwjehflkwejflwejf call");
-
-        return return_val;
+      //  return return_val;
      }
 
      //update site with user stats
@@ -126,5 +122,14 @@
 
         $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
         $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
+    }
+    //Get's Popup window's status
+    function checkPopup() {
+        if(popup.closed) {
+            console.log("the popup has closed");
+        } else {
+          window.setTimeout(checkPopup, 1000);
+          console.log("the popup is open");
+        }
     }
   });

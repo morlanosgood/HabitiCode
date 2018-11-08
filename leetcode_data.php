@@ -26,23 +26,36 @@
 // curl_close($curl);
 // echo "yes";
 
-
 //Get Submissions
 $curl = curl_init();
-debug_to_console("get subs start");
-$curlArray = array(
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HEADER => false,
-    CURLOPT_HTTPHEADER => "Content-type: application/json",
-    CURLOPT_URL => "https://leetcode.com/api/submissions/",
-    // CURLOPT_COOKIEFILE => $cookieJar
-  );
 
-curl_setopt_array($curl, $curlArray);
-$submissions = curl_exec($curl);
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://leetcode.com/api/submissions/?offset=0&limit=20&lastkey=",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "accept: */*",
+    "accept-language: en-US,en;q=0.5",
+    "cache-control: no-cache",
+    "connection: keep-alive",
+    "cookie: __cfduid=ddef8704137127f5ab5fdaeef528d017c1541623271; csrftoken=rW5nAHgpKrYQjOlw5n50iVploJKXCagURGSXhgBESaFd6D9i7NvbUrIvXwiFWzdC; _ga=GA1.2.1663298689.1541623298; _gid=GA1.2.1223495219.1541623298;",
+    "host: leetcode.com",
+    // "postman-token: 6ef6a0f2-99ac-0fd2-1979-d7c3a74a4ef8",
+    "referer: https://leetcode.com/submissions/",
+    "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0",
+    "x-newrelic-id: UAQDVFVRGwEAXVlbBAg=",
+    "x-requested-with: XMLHttpRequest"
+  ),
+));
+$response = curl_exec($curl);
+$err = curl_error($curl);
 curl_close($curl);
-echo $submissions;
 
+echo $response
 
 //https://leetcode.com/api/submissions/
 // FITBIT CODE FOR REFERENCE
