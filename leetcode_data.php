@@ -1,10 +1,10 @@
 <?php
 
-$cookieJar = tempnam(sys_get_temp_dir(), 'cookie.txt');
+// $cookieJar = tempnam(sys_get_temp_dir(), 'cookie.txt');
 
-$params = $_GET['data_params'];
-$user = $params['username'];
-$pass = $params['password'];
+// $params = $_GET['data_params'];
+// $user = $params['username'];
+// $pass = $params['password'];
 
 // // login to LeetCode
 // $curl = curl_init();

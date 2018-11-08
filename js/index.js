@@ -50,13 +50,13 @@
           var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
           console.log(popup.location.href);
-          popup.on('beforeunload', function(){
+          $(popup).on('beforeunload', function(){
             //deal with case when refresh page/go to hyperlink
             popup.close();
             console.log("I've closed the window!");
             //ajax GET call
+            leetcode_do();
           });
-
         });
 
     //LeetCode window closed
@@ -87,12 +87,12 @@
 
      // Gets LeetCode submissions by calling leetcode_data.php, getting
      //  submissions and returning to submit button click
-     function leetcode_do(params){
+     function leetcode_do(){
        console.log("leetcode - start ajax call");
         return_val = false;
         $.ajax({
          url:'leetcode_data.php',
-         data:{data_params: params},
+         // data:{data_params: params},
          async: false,
          success: function(data){
              if(data == 'ERROR'){
