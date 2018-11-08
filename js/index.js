@@ -50,14 +50,13 @@
           var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
           console.log(popup.location.href);
-
-          popup.onbeforeunload() = function(){
+          popup.on('beforeunload', function(){
             //deal with case when refresh page/go to hyperlink
             popup.close();
             console.log("I've closed the window!");
             //ajax GET call
+          });
 
-          }
         });
 
     //LeetCode window closed
