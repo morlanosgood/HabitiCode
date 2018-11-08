@@ -50,12 +50,17 @@
           var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
           console.log(popup.location.href);
-          while(popup.location.href != "https://leetcode.com/problemset/all/"){}
-          console.log(popup.location.href);
-          popup.close();
-          console.log("I've closed the window!");
-            //ajax call
+
+          popup.onbeforeunload() = function(){
+            //deal with case when refresh page/go to hyperlink
+            popup.close();
+            console.log("I've closed the window!");
+            //ajax GET call
+
+          }
         });
+
+    //LeetCode window closed
 
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
      // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
