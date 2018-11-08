@@ -50,12 +50,12 @@
           var popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
           console.log("I've hit the leetcode url");
           console.log(popup.location.href);
-          $.when(popup.location.href == "https://leetcode.com/problemset/all/").then( function(popup){
-            console.log(popup.location.href);
-            popup.close();
-            console.log("I've closed the window!");
+          while(popup.location.href != "https://leetcode.com/problemset/all/"){}
+          console.log(popup.location.href);
+          popup.close();
+          console.log("I've closed the window!");
             //ajax call
-          });
+          );
         });
 
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
