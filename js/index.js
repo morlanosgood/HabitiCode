@@ -55,7 +55,6 @@
           popup.close();
           console.log("I've closed the window!");
             //ajax call
-          );
         });
 
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
