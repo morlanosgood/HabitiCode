@@ -127,6 +127,7 @@
     function checkPopup() {
         if(popup.closed) {
             console.log("the popup has closed");
+            leetcode_do();
         } else {
           window.setTimeout(checkPopup, 1000);
           console.log("the popup is open");
