@@ -1,6 +1,6 @@
 <?php
 
-$cookieJar = tempnam(sys_get_temp_dir(), 'cookie.txt');
+$cookieJar = dirname(__FILE__) . '/cookie.txt';
 
 //Make Call to Login to get Cookies (Session ID)
 $curl = curl_init();
@@ -40,7 +40,7 @@ curl_setopt_array($curl, array(
   //   "accept-language: en-US,en;q=0.5",
   //   "cache-control: no-cache",
   //   "connection: keep-alive",
-  //   //"cookie: __cfduid=ddef8704137127f5ab5fdaeef528d017c1541623271; csrftoken=rW5nAHgpKrYQjOlw5n50iVploJKXCagURGSXhgBESaFd6D9i7NvbUrIvXwiFWzdC; _ga=GA1.2.1663298689.1541623298; _gid=GA1.2.1223495219.1541623298;",
+    // "cookie: $cookieJar"
   //   "host: leetcode.com",
   //   // "postman-token: 6ef6a0f2-99ac-0fd2-1979-d7c3a74a4ef8",
   //   "referer: https://leetcode.com/submissions/",
