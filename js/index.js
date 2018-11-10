@@ -90,21 +90,21 @@
         $.ajax({
          url:'leetcode_data.php',
          // data:{data_params: params},
-         async: true,
+         async: false,
          success: function(data){
              if(data == 'ERROR'){
                 return_val = false;
-                console.log(return_val);
+                // console.log(return_val);
              }else{
                  return_val = data;
-                 console.log(return_val);
+                 // console.log(return_val);
              }
              $('#user_id').val('');
              $('#api_token').val('');
-         },
-         error: function(data){
-           console.log("ERROR WITH AJAX CALL");
          }
+         // error: function(data){
+         //   console.log("ERROR WITH AJAX CALL");
+         // }
         });
         console.log("I have finished the ajax  lwjehflkwejflwejf call");
       //  return return_val;
