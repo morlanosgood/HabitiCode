@@ -104,6 +104,7 @@
          },
          error: function(data){
            console.log("ERROR WITH AJAX CALL");
+           console.log(data);
          }
         });
         console.log("I have finished the ajax call");

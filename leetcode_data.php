@@ -13,13 +13,13 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_COOKIEJAR => $cookieJar,
   CURLOPT_HTTPHEADER => array(
-    // "accept-language: en-US,en;q=0.5",
-    // "connection: keep-alive",
-    // "host: leetcode.com",
-    // "origin: https://leetcode.com",
-    // "referer: https://leetcode.com/accounts/login/",
-    // "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
-    // "x-requested-with: XMLHttpRequest"
+    "accept-language: en-US,en;q=0.5",
+    "connection: keep-alive",
+    "host: leetcode.com",
+    "origin: https://leetcode.com",
+    "referer: https://leetcode.com/accounts/login/",
+    "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
+    "x-requested-with: XMLHttpRequest"
   ),
 ));
 
@@ -36,17 +36,17 @@ curl_setopt_array($curl, array(
   CURLOP_COOKIEFILE => $cookieJar,
   CURLOPT_HTTPHEADER => array(
     "Content-type: application/json"
-    "accept: */*",
-    "accept-language: en-US,en;q=0.5",
-    "cache-control: no-cache",
-    "connection: keep-alive",
-    //"cookie: __cfduid=ddef8704137127f5ab5fdaeef528d017c1541623271; csrftoken=rW5nAHgpKrYQjOlw5n50iVploJKXCagURGSXhgBESaFd6D9i7NvbUrIvXwiFWzdC; _ga=GA1.2.1663298689.1541623298; _gid=GA1.2.1223495219.1541623298;",
-    "host: leetcode.com",
-    // "postman-token: 6ef6a0f2-99ac-0fd2-1979-d7c3a74a4ef8",
-    "referer: https://leetcode.com/submissions/",
-    "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0",
-    "x-newrelic-id: UAQDVFVRGwEAXVlbBAg=",
-    "x-requested-with: XMLHttpRequest"
+  //   "accept: */*",
+  //   "accept-language: en-US,en;q=0.5",
+  //   "cache-control: no-cache",
+  //   "connection: keep-alive",
+  //   //"cookie: __cfduid=ddef8704137127f5ab5fdaeef528d017c1541623271; csrftoken=rW5nAHgpKrYQjOlw5n50iVploJKXCagURGSXhgBESaFd6D9i7NvbUrIvXwiFWzdC; _ga=GA1.2.1663298689.1541623298; _gid=GA1.2.1223495219.1541623298;",
+  //   "host: leetcode.com",
+  //   // "postman-token: 6ef6a0f2-99ac-0fd2-1979-d7c3a74a4ef8",
+  //   "referer: https://leetcode.com/submissions/",
+  //   "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0",
+  // //  "x-newrelic-id: UAQDVFVRGwEAXVlbBAg=",
+  //   "x-requested-with: XMLHttpRequest"
   ),
 ));
 $response = curl_exec($curl);
