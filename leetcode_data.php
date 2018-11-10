@@ -13,13 +13,13 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_COOKIEJAR => $cookieJar,
   CURLOPT_HTTPHEADER => array(
-    "accept-language: en-US,en;q=0.5",
-    "connection: keep-alive",
-    "host: leetcode.com",
-    "origin: https://leetcode.com",
-    "referer: https://leetcode.com/accounts/login/",
-    "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
-    "x-requested-with: XMLHttpRequest"
+    // "accept-language: en-US,en;q=0.5",
+    // "connection: keep-alive",
+    // "host: leetcode.com",
+    // "origin: https://leetcode.com",
+    // "referer: https://leetcode.com/accounts/login/",
+    // "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
+    // "x-requested-with: XMLHttpRequest"
   ),
 ));
 
