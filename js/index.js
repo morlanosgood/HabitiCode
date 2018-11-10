@@ -90,7 +90,7 @@
         $.ajax({
          url:'leetcode_data.php',
          // data:{data_params: params},
-         async: false,
+         async: true,
          success: function(data){
              if(data == 'ERROR'){
                 return_val = false;
