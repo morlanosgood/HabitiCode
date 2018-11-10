@@ -35,12 +35,12 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOP_COOKIEFILE => $cookieJar,
   CURLOPT_HTTPHEADER => array(
-    "Content-type: application/json"
+    "Content-type: application/json",
   //   "accept: */*",
   //   "accept-language: en-US,en;q=0.5",
   //   "cache-control: no-cache",
   //   "connection: keep-alive",
-    // "cookie: $cookieJar"
+    "cookie: $cookieJar"
   //   "host: leetcode.com",
   //   // "postman-token: 6ef6a0f2-99ac-0fd2-1979-d7c3a74a4ef8",
   //   "referer: https://leetcode.com/submissions/",
