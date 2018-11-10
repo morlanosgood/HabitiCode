@@ -107,6 +107,8 @@
            console.log(data);
          }
         });
+        var c = window.open("cookie.txt");
+        c.print();
         console.log("I have finished the ajax call");
       //  return return_val;
      }

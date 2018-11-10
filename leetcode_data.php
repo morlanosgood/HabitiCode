@@ -1,6 +1,6 @@
 <?php
 
-$cookieJar = dirname(__FILE__) . '/cookie.txt';
+$cookieJar = dirname(__FILE__) . '/js/cookie.txt';
 
 //Make Call to Login to get Cookies (Session ID)
 $curl = curl_init();
