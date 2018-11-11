@@ -11,6 +11,7 @@ curl_setopt_array($curl, array(
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 30,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  // CURLOPT_HEADER => true,
   CURLOPT_COOKIEJAR => $cookieJar,
   CURLOPT_HTTPHEADER => array(
     "accept-language: en-US,en;q=0.5",
@@ -22,6 +23,8 @@ curl_setopt_array($curl, array(
     "x-requested-with: XMLHttpRequest"
   ),
 ));
+$result = curl_exec($curl);
+// preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
 
 //Get Submissions
 $curl = curl_init();
