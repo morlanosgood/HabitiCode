@@ -1,37 +1,37 @@
 <?php
 
-$cookieJar = dirname(__FILE__) . '/js/cookie.txt';
+// $cookieJar = dirname(__FILE__) . '/js/cookie.txt';
+//
+// //Make Call to Login to get Cookies (Session ID)
+// $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://leetcode.com/accounts/login/",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => "",
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 30,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_HEADER => true,
+//   CURLOPT_COOKIEJAR => $cookieJar,
+//   CURLOPT_HTTPHEADER => array(
+//     "accept-language: en-US,en;q=0.5",
+//     "connection: keep-alive",
+//     "host: leetcode.com",
+//     "origin: https://leetcode.com",
+//     "referer: https://leetcode.com/accounts/login/",
+//     "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
+//     "x-requested-with: XMLHttpRequest"
+//   ),
+// ));
+// // $result = curl_exec($curl);
+// // preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
+//
+// //Get Submissions
 
-//Make Call to Login to get Cookies (Session ID)
 $curl = curl_init();
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://leetcode.com/accounts/login/",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_HEADER => true,
-  CURLOPT_COOKIEJAR => $cookieJar,
-  CURLOPT_HTTPHEADER => array(
-    "accept-language: en-US,en;q=0.5",
-    "connection: keep-alive",
-    "host: leetcode.com",
-    "origin: https://leetcode.com",
-    "referer: https://leetcode.com/accounts/login/",
-    "user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0",
-    "x-requested-with: XMLHttpRequest"
-  ),
-));
-// $result = curl_exec($curl);
-// preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
-
-//Get Submissions
-
-$curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://leetcode.com/api/submissions/?offset=0&limit=20&lastkey=",
+  CURLOPT_URL => "https://leetcode.com/api/submissions/",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
