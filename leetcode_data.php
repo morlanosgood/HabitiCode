@@ -27,7 +27,6 @@
 // // preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
 //
 // //Get Submissions
-
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -57,7 +56,11 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-echo $response
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
+}
 
 //https://leetcode.com/api/submissions/
 // FITBIT CODE FOR REFERENCE
