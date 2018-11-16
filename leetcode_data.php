@@ -13,9 +13,10 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error in GET Login Call #:" . $err;
-}
+echo file_get_contents($cookie);
+// if ($err) {
+//   echo "cURL Error in GET Login Call #:" . $err;
+// }
 
 //Get Submission Log
 $curl = curl_init();
