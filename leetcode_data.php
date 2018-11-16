@@ -15,9 +15,9 @@ curl_close($curl);
 
 parse_str(file_get_contents($cookie), $output);
 $csrftoken = $output['csrftoken'];
+
 // if ($err) {
 //   echo "cURL Error in GET Login Call #:" . $err;
-// }
 
 //Login with Hard Coded Info ---------------------------------------------------
 $curl = curl_init();
@@ -27,7 +27,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_COOKIEFILE => $cookie,
   CURLOOPT_COOKIEJAR => $cookie,
-  CURLOPT_POSTFIELDS => array('csrftoken'=>$csrftoken,
+  CURLOPT_POSTFIELDS => array('csrfmiddlewaretoken'=> $csrftoken,
               'login'=>'morlano',
               'password'=>'Morlan16'),
   CURLOPT_HTTPHEADER => array(
