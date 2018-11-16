@@ -18,6 +18,7 @@ $csrftoken = $output['csrftoken']
 // if ($err) {
 //   echo "cURL Error in GET Login Call #:" . $err;
 // }
+echo "not an error with 1st part"
 
 //Login with Hard Coded Info ---------------------------------------------------
 $curl = curl_init();
