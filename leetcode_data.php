@@ -20,30 +20,30 @@ $csrftoken = $output['csrftoken']
 // }
 echo "not an error with 1st part"
 
-//Login with Hard Coded Info ---------------------------------------------------
-$curl = curl_init();
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://leetcode.com/accounts/login",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_COOKIEFILE => $cookie,
-  CURLOOPT_COOKIEJAR => $cookie,
-  CURLOPT_POSTFIELDS => array('csrftoken'=>$csrftoken,
-              'login'=>'morlano',
-              'password'=>'Morlan16'),
-  CURLOPT_HTTPHEADER => array(
-    "Referer: https://leetcode.com/accounts/login/",
-    "User-Agent: Mozilla/5.0")
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-}
-echo file_get_contents($cookie);
+// //Login with Hard Coded Info ---------------------------------------------------
+// $curl = curl_init();
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => "https://leetcode.com/accounts/login",
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_CUSTOMREQUEST => "POST",
+//   CURLOPT_COOKIEFILE => $cookie,
+//   CURLOOPT_COOKIEJAR => $cookie,
+//   CURLOPT_POSTFIELDS => array('csrftoken'=>$csrftoken,
+//               'login'=>'morlano',
+//               'password'=>'Morlan16'),
+//   CURLOPT_HTTPHEADER => array(
+//     "Referer: https://leetcode.com/accounts/login/",
+//     "User-Agent: Mozilla/5.0")
+// ));
+//
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
+// curl_close($curl);
+//
+// if ($err) {
+//   echo "cURL Error #:" . $err;
+// }
+// echo file_get_contents($cookie);
 
 //Get Submission Log------------------------------------------------------------
 $curl = curl_init();
