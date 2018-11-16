@@ -13,9 +13,9 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 curl_close($curl);
 
-parse_str(file_get_contents($cookie), $output);
-$csrftoken = $output['csrftoken'];
-echo $csrftoken . file_get_contents($cookie);
+$comp = preg_split("/[\t]/", file_get_contents($cookie));
+// $csrftoken = $output['csrftoken'];
+echo $comp;
 // if ($err) {
 //   echo "cURL Error in GET Login Call #:" . $err;
 
