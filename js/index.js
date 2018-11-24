@@ -31,16 +31,15 @@
         });
 
       // when LeetCode Submit Button clicked
-       $("#leetcode_info_submit").click(function( event ) {
-         if($('#username').val() && $('#password').val()){
+       $("#codewars_info_submit").click(function( event ) {
+         if($('#username').val()){
             console.log("leetcode button clicked & fields populated");
              localStorage.user = $('#username').val();
              console.log(localStorage.user);
-             localStorage.pass = $('#password').val();
-             console.log(localStorage.pass);
-             leet_params = {username: localStorage.user, password: localStorage.pass};
-             localStorage.leet_stats = leetcode_do(leet_params);
-             leet_subs = JSON.parse(localStorage.leet_stats);
+             // localStorage.pass = $('#password').val();
+             // console.log(localStorage.pass);
+             localStorage.code_stats = codewars_do(localStorage.user);
+             code_subs = JSON.parse(localStorage.code_stats);
              console.log(leet_subs);
         }
        });
@@ -54,6 +53,8 @@
               console.log(popup.closed);
               checkPopup();
             });
+
+
 
 
     //LeetCode window closed
@@ -108,7 +109,35 @@
          }
         });
         console.log("I have finished the ajax call");
+
      }
+
+     // Gets Codewars submissions by calling leetcode_data.php, getting
+     //  submissions and returning to submit button click
+     function codewars_do(user){
+       console.log("codewars - start ajax call");
+        return_val = false;
+        $.ajax({
+         url:'codewars_data.php',
+         data:{username: user},
+         async: false,
+         success: function(data){
+             if(data == 'ERROR'){
+                return_val = false;
+                console.log(return_val);
+             }else{
+                 return_val = data;
+                 console.log(return_val);
+             }
+         },
+         error: function(data){
+           console.log("ERROR WITH AJAX CALL");
+           console.log(data);
+         }
+        });
+        console.log("I have finished the ajax call - codewars");
+     }
+
 
      //update site with user stats
      function update_habitica_html(user_stats){

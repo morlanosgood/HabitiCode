@@ -44,15 +44,15 @@
                 <div class="container" id="main_view">
                   <div class="row">
                     <div class="col">
-                      <!-- <div class="form-group">
+                      <div class="form-group">
                            <label class="control-label">Username</label>
                            <input  class="form-control" type="text" id="username"/>
                            <br>
-                           <label class="control-label">Password</label>
+                           <!-- <label class="control-label">Password</label>
                           <input class="form-control" name="searchTxt" type="password" id="password"/>
-                          <br>
-                          <h5 class="btn btn-secondary" id="leetcode_info_submit">Submit</h5>
-                      </div> -->
+                          <br> -->
+                          <h5 class="btn btn-secondary" id="codewars_info_submit">Submit</h5>
+                      </div>
                       <br>
                       <h6>Problems Attempted Today: <span id="attempted"></span></h6>
                       <h6>Problems Solved Today: <span id="solved"></span></h6>
