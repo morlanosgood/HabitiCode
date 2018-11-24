@@ -50,8 +50,9 @@
        //when Goals button clicked
        $("#update_submit").click(function( event ) {
          localStorage.num_complete = $('#completed_value').val(); // int
+         num_complete = $('#completed_value').val(); // int
          localStorage.track_complete = $('#track_complete').val(); //bool
-         localStorage.task_name = "Codewar - complete " . localStorage.num_complete . "challenges";
+         localStorage.task_name = "Codewar - complete " . num_complete . "challenges";
        }
 
        //repeat while window is open!
