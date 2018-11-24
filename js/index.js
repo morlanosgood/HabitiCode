@@ -30,7 +30,7 @@
           event.preventDefault();
         });
 
-      // when LeetCode Submit Button clicked
+      // when CodeWars Submit Button clicked
        $("#codewars_info_submit").click(function( event ) {
          if($('#username').val()){
             console.log("leetcode button clicked & fields populated");
@@ -40,19 +40,19 @@
              // console.log(localStorage.pass);
              localStorage.code_stats = codewars_do(localStorage.user);
              code_subs = JSON.parse(localStorage.code_stats);
-             console.log(leet_subs);
+             console.log(code_subs);
         }
        });
 
-       // when LeetCode Login Button clicked
-       $("#login").click(function( event ) {
-            	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
-              console.log("I've hit the leetcode url");
-              console.log(popup.location.href);
-              console.log(typeof popup);
-              console.log(popup.closed);
-              checkPopup();
-            });
+       // // when LeetCode Login Button clicked
+       // $("#login").click(function( event ) {
+       //      	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
+       //        console.log("I've hit the leetcode url");
+       //        console.log(popup.location.href);
+       //        console.log(typeof popup);
+       //        console.log(popup.closed);
+       //        checkPopup();
+       //      });
 
 
 
@@ -109,12 +109,11 @@
          }
         });
         console.log("I have finished the ajax call");
-
      }
 
      // Gets Codewars submissions by calling leetcode_data.php, getting
      //  submissions and returning to submit button click
-     function codewars_do(user){
+     function codewars_do(username){
        console.log("codewars - start ajax call");
         return_val = false;
         $.ajax({
@@ -152,14 +151,14 @@
         $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
         $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
     }
-    //Get's Popup window's status
-    function checkPopup() {
-        if(popup.closed) {
-            console.log("the popup has closed");
-            leetcode_do();
-        } else {
-          window.setTimeout(checkPopup, 1000);
-          console.log("the popup is open");
-        }
-    }
+    // //Get's Popup window's status
+    // function checkPopup() {
+    //     if(popup.closed) {
+    //         console.log("the popup has closed");
+    //         leetcode_do();
+    //     } else {
+    //       window.setTimeout(checkPopup, 1000);
+    //       console.log("the popup is open");
+    //     }
+    // }
   });
