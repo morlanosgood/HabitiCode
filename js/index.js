@@ -118,7 +118,7 @@
         return_val = false;
         $.ajax({
          url:'codewars_data.php',
-         data:{username: user},
+         data:{username: username},
          async: false,
          success: function(data){
              if(data == 'ERROR'){
