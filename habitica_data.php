@@ -9,9 +9,16 @@ $api_tok = $params['api_tok'];
 $habit = new Habitica($user_id, $api_tok);
 
 if($action == 'change_habit'){
+    //get taskId
     $dir = $params['direction'];
-    $taskName = $params['task_name'];
-    $task_id = $habit->getTaskId($taskName);
+    $task_name = $params['task_name'];
+    $task_id = $habit->getTaskId($task_name);
+
+    //if task not available, create it
+    if($task_id == 'No task found with that name'){
+      $newTaskParams = array( 'type': 'habit', 'text': $task_name, 'note': 'This task was created with HabitiCode.');
+      $task_id = $habit->newTask($newTaskParams);
+    }
 
     if(($task_id != 'No task found with that name') && ($dir == 'up' || $dir == 'down')){
         $params = array('taskId'=>$task_id,'direction'=>$dir);

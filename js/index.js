@@ -30,35 +30,51 @@
           event.preventDefault();
         });
 
-      // when CodeWars Submit Button clicked
+      // when Codewars Submit Button clicked
        $("#codewars_info_submit").click(function( event ) {
          if($('#username').val()){
             console.log("leetcode button clicked & fields populated");
-             localStorage.user = $('#username').val();
-             console.log(localStorage.user);
-             // localStorage.pass = $('#password').val();
-             // console.log(localStorage.pass);
-             localStorage.code_stats = codewars_do(localStorage.user);
+             localStorage.code_user = $('#username').val();
+             console.log(localStorage.code_user);
+             localStorage.code_stats = codewars_do(localStorage.code_user);
              code_subs = JSON.parse(localStorage.code_stats);
+             if (!localStorage.old_completed){
+               localStorage.old_completed = code_subs['codeChallenges']['totalCompleted'];
+               console.log(localStorage.old_completed);
+             }
              console.log("click method");
              console.log(code_subs);
         }
        });
 
-       // // when LeetCode Login Button clicked
-       // $("#login").click(function( event ) {
-       //      	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
-       //        console.log("I've hit the leetcode url");
-       //        console.log(popup.location.href);
-       //        console.log(typeof popup);
-       //        console.log(popup.closed);
-       //        checkPopup();
-       //      });
+       //when Goals button clicked
+       $("#update_submit").click(function( event ) {
+         localStorage.num_complete = $('#completed_value').val(); // int
+         localStorage.track_complete = $('#track_complete').val(); //bool
+         localStorage.task_name = "Codewar - complete " . localStorage.num_complete . "challenges";
+       }
 
+       //repeat while window is open!
+       window.setInterval(function
+         //check that all necessary data is inputted
+         if (localStorage.hab_user_id && localStorage.hab_api_tok && localStorage.task_name && localStorage.code_user){
+           //see if we should increment tasks
+           localStorage.code_stats = codewars_do(localStorage.code_user);
+           code_subs = JSON.parse(localStorage.code_stats);
+           localStorage.new_completed = code_subs['codeChallenges']['totalCompleted'];
+           console.log(localStorage.new_completed);
+           if (localStorage.new_completed > localStorage.old_completed){
+             diff = localStorage.new_completed - localStorage.old_completed;
+             hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name, direction: "up"};
+             //increment habit diff times
+             for (int i = 0; i < diff; i++){
+               localStorage.hab_goal[i] = habitica_do(hab_params, "change_habit");
+             }
+             //should check if any failed
+             localStorage.old_completed = localStorage.new_completed;
+           }
+       }, )
 
-
-
-    //LeetCode window closed
 
      // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
      // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
@@ -70,7 +86,7 @@
         $.ajax({
          url:'habitica_data.php',
          data:{data_params: params, action: action},
-         async: false,
+         async: true,
          success: function(data){
              if(data == 'ERROR'){
                 return_val = false;
@@ -82,34 +98,6 @@
          }
         });
         return return_val;
-     }
-
-     // Gets LeetCode submissions by calling leetcode_data.php, getting
-     //  submissions and returning to submit button click
-     function leetcode_do(){
-       console.log("leetcode - start ajax call");
-        return_val = false;
-        $.ajax({
-         url:'leetcode_data.php',
-         // data:{data_params: params},
-         async: true,
-         success: function(data){
-             if(data == 'ERROR'){
-                return_val = false;
-                console.log(return_val);
-             }else{
-                 return_val = data;
-                 console.log(return_val);
-             }
-             $('#user_id').val('');
-             $('#api_token').val('');
-         },
-         error: function(data){
-           console.log("ERROR WITH AJAX CALL");
-           console.log(data);
-         }
-        });
-        console.log("I have finished the ajax call");
      }
 
      // Gets Codewars submissions by calling leetcode_data.php, getting
@@ -153,6 +141,48 @@
         $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
         $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
     }
+
+//----------------------------------LEETCODE METHODS----------------------------
+    // // when LeetCode Login Button clicked
+    // $("#login").click(function( event ) {
+    //      	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
+    //        console.log("I've hit the leetcode url");
+    //        console.log(popup.location.href);
+    //        console.log(typeof popup);
+    //        console.log(popup.closed);
+    //        checkPopup();
+    //      });
+
+
+     // // Gets LeetCode submissions by calling leetcode_data.php, getting
+     // //  submissions and returning to submit button click
+     // function leetcode_do(){
+     //   console.log("leetcode - start ajax call");
+     //    return_val = false;
+     //    $.ajax({
+     //     url:'leetcode_data.php',
+     //     // data:{data_params: params},
+     //     async: true,
+     //     success: function(data){
+     //         if(data == 'ERROR'){
+     //            return_val = false;
+     //            console.log(return_val);
+     //         }else{
+     //             return_val = data;
+     //             console.log(return_val);
+     //         }
+     //         $('#user_id').val('');
+     //         $('#api_token').val('');
+     //     },
+     //     error: function(data){
+     //       console.log("ERROR WITH AJAX CALL");
+     //       console.log(data);
+     //     }
+     //    });
+     //    console.log("I have finished the ajax call");
+     // }
+
+
     // //Get's Popup window's status
     // function checkPopup() {
     //     if(popup.closed) {

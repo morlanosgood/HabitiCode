@@ -17,7 +17,7 @@
               <br>
               <h1 class="text-center"> Welcome to HabitiCode</h1>
               <br>
-              <h5 class="text-lavender text-center"> Our goal is to make technical interview preparation more engaging by enabling users to easily gamify the process. HabitiCode will connect Habitica with LeetCode to create and update goals in Habitica that will earn you points. By following the directions below, you will be auto-awarded coins in Habitica for your progress in LeetCode.</h5>
+              <h5 class="text-lavender text-center"> Our goal is to make technical interview preparation more engaging by enabling users to easily gamify the process. HabitiCode will connect Habitica with Codewars to create and update goals in Habitica that will earn you points. By following the directions below, you will be auto-awarded coins in Habitica for your progress in Codewars.</h5>
             </div>
             <div class="col bg-purple"></div>
           </div>
@@ -26,7 +26,7 @@
               <div class="col-3"></div>
               <div class="col">
                 <h4>Directions:</h4>
-                <h6> 1.) Log into LeetCode using the button on the right</h6>
+                <h6> 1.) Enter your Codewars Username</h6>
                 <h6> 2.) Input your Habitica User ID and API Token located in Settings -> API and click Submit</h6>
                 <h6> 3.) Enter the metrics you want to track (and click the checkbox) and click Submit</h6>
               </div>
@@ -38,9 +38,9 @@
             <div class="row">
               <!-- LeetCode Column -->
               <div class="col pt-2">
-                <img src="img/leetcode_logo.png" class="mx-auto d-block" alt="..." style="max-height: 100px; max-width: 100px;">
-                <!-- <h5 class="text-center">Enter LeetCode Data Here</h5> -->
-               <a class="btn btn-primary center-block" id="login">Login to LeetCode</a>
+                <img src="img/codewars.jpg" class="mx-auto d-block" alt="..." style="max-height: 100px; max-width: 100px;">
+                <h5 class="text-center">Enter Codewars Data Here</h5>
+               <!-- <a class="btn btn-primary center-block" id="login">Login to LeetCode</a> -->
                 <div class="container" id="main_view">
                   <div class="row">
                     <div class="col">
@@ -54,10 +54,10 @@
                           <h5 class="btn btn-secondary" id="codewars_info_submit">Submit</h5>
                       </div>
                       <br>
-                      <h6>Problems Attempted Today: <span id="attempted"></span></h6>
-                      <h6>Problems Solved Today: <span id="solved"></span></h6>
+                      <!-- <h6>Problems Attempted Today: <span id="attempted"></span></h6>
+                      <h6>Problems Solved Today: <span id="solved"></span></h6> -->
                     <br>
-                    <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br>
+                    <!-- <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br> -->
                 </div>
                 </div>
              </div>
@@ -71,15 +71,15 @@
                       <div class="row px-2">
                         <div class="input-group">
                           <div class="col-1 bg-lavender rounded-left border-right-0"><span class="input-group-addon center">
-                                <input type="checkbox" aria-label="..." id="track_problems">
+                                <input type="checkbox" aria-label="..." id="track_complete">
                             </span></div>
-                          <div class="col-4 bg-lavender rounded-0 border-left-0 border-right-0 px-0"><input type="text" id="problems_value" class="form-control"></div>
-                          <div class="col-6 bg-lavender rounded-right border-left-0"><span class="input-group-addon">problems attempted</span></div>
+                          <div class="col-4 bg-lavender rounded-0 border-left-0 border-right-0 px-0"><input type="text" id="completed_value" class="form-control"></div>
+                          <div class="col-6 bg-lavender rounded-right border-left-0"><span class="input-group-addon">challenge(s) completed</span></div>
                           <div class="col-1"></div>
                         </div>
                     </div>
                     <br>
-                    <div class="row align-items-center px-2">
+                    <!-- <div class="row align-items-center px-2">
                         <div class="input-group">
                           <div class="col-1 bg-lavender rounded-left border-right-0"><span class="input-group-addon center">
                                 <input type="checkbox" aria-label="..." id="track_solved">
@@ -88,7 +88,7 @@
                           <div class="col-6 bg-lavender rounded-right border-left-0"><span class="input-group-addon">problems solved</span></div>
                           <div class="col-1 bg-light"></div>
                         </div>
-                    </div>
+                    </div> -->
                   </div>
                   <h5 class="btn btn-secondary" id="update_submit">Submit</h5>
                   <br>
