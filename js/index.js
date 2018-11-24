@@ -40,6 +40,7 @@
              // console.log(localStorage.pass);
              localStorage.code_stats = codewars_do(localStorage.user);
              code_subs = JSON.parse(localStorage.code_stats);
+             console.log("click method");
              console.log(code_subs);
         }
        });
@@ -135,6 +136,7 @@
          }
         });
         console.log("I have finished the ajax call - codewars");
+        return return_val;
      }
 
 
