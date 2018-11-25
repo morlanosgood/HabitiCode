@@ -40,6 +40,7 @@ $(document).ready(function() {
             code_subs = JSON.parse(localStorage.code_stats);
             console.log("click method");
             console.log(code_subs);
+            console.log(code_subs['codeChallenges']['totalCompleted']);
             // if (!localStorage.old_completed){
             //   localStorage.old_completed = code_subs['codeChallenges']['totalCompleted'];
             //   console.log(localStorage.old_completed);
