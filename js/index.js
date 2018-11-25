@@ -38,12 +38,13 @@ $(document).ready(function() {
             console.log(localStorage.code_user);
             localStorage.code_stats = codewars_do(localStorage.code_user);
             code_subs = JSON.parse(localStorage.code_stats);
-            if (!localStorage.old_completed){
-              localStorage.old_completed = code_subs['codeChallenges']['totalCompleted'];
-              console.log(localStorage.old_completed);
-            }
             console.log("click method");
             console.log(code_subs);
+            // if (!localStorage.old_completed){
+            //   localStorage.old_completed = code_subs['codeChallenges']['totalCompleted'];
+            //   console.log(localStorage.old_completed);
+            // }
+
        }
       });
 
