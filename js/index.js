@@ -33,7 +33,7 @@ $(document).ready(function() {
      // when Codewars Submit Button clicked
       $("#codewars_info_submit").click(function( event ) {
         if($('#username').val()){
-           console.log("leetcode button clicked & fields populated");
+           console.log("codewars button clicked & fields populated");
             localStorage.code_user = $('#username').val();
             console.log(localStorage.code_user);
             localStorage.code_stats = codewars_do(localStorage.code_user);
@@ -87,7 +87,7 @@ $(document).ready(function() {
        $.ajax({
         url:'habitica_data.php',
         data:{data_params: params, action: action},
-        async: true,
+        async: false,
         success: function(data){
             if(data == 'ERROR'){
                return_val = false;
