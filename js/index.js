@@ -109,7 +109,7 @@ $(document).ready(function() {
        $.ajax({
         url:'codewars_data.php',
         data:{username: username},
-        async: false,
+        async: true,
         success: function(data){
             if(data == 'ERROR'){
                return_val = false;
