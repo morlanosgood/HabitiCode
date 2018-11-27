@@ -64,23 +64,27 @@ $(document).ready(function() {
     // get_stats required variables: user_id (string), api_tok (string)
     //
     function habitica_do(params, action){
-      console.log("habitica - start ajax call");
-       $.ajax({
-        url:'habitica_data.php',
-        data:{data_params: params, action: action},
-        async: true,
-        success: function(data){
-            if(data == 'ERROR'){
-               return_val = false;
-            }else{
-                return_val = data;
-            }
-            // $('#user_id').val('');
-            // $('#api_token').val('');
-        }
-       });
-       return return_val;
-    }
+      console.log("start habitica_do")
+      return_val = false;
+      $.ajax({
+       url:'habit_data.php',
+       data:{data_params: params, action: action},
+       async: false,
+       success: function(data){
+           if(data == 'ERROR'){
+              return_val = false;
+           }else{
+             console.log(data);
+               return_val = data;
+           }
+           $('#user_id').val('');
+           $('#api_token').val('');
+
+       }
+      });
+      return return_val;
+   }
+
 
     // Gets Codewars submissions by calling leetcode_data.php, getting
     //  submissions and returning to submit button click
