@@ -58,28 +58,6 @@ $(document).ready(function() {
         localStorage.task_name = "Codewar - complete " + num_complete + "challenges";
       });
 
-      // //repeat while window is open!
-      // window.setInterval(function(){
-      //   //check that all necessary data is inputted
-      //   if (localStorage.hab_user_id && localStorage.hab_api_tok && localStorage.task_name && localStorage.code_user){
-      //     //see if we should increment tasks
-      //     localStorage.code_stats = codewars_do(localStorage.code_user);
-      //     code_subs = JSON.parse(localStorage.code_stats);
-      //     localStorage.new_completed = code_subs['codeChallenges']['totalCompleted'];
-      //     console.log(localStorage.new_completed);
-      //     if (localStorage.new_completed > localStorage.old_completed){
-      //       diff = localStorage.new_completed - localStorage.old_completed;
-      //       hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name, direction: "up"};
-      //       //increment habit diff times
-      //       for (var i = 0; i < diff; i++){
-      //         localStorage.hab_goal[i] = habitica_do(hab_params, "change_habit");
-      //       }
-      //       //should check if any failed
-      //       localStorage.old_completed = localStorage.new_completed;
-      //     }
-      // }}, 30000)
-
-
     // Updates habitica habit -- MAKES AJAX CALL TO HABITICA_DATA
     // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
     // change_habit required variables: task_name (string), direction ('up' | 'down'), user_id (string), api_tok (string)
@@ -198,4 +176,25 @@ $(document).ready(function() {
    //       console.log("the popup is open");
    //     }
    // }
+
+   // //repeat while window is open!
+   // window.setInterval(function(){
+   //   //check that all necessary data is inputted
+   //   if (localStorage.hab_user_id && localStorage.hab_api_tok && localStorage.task_name && localStorage.code_user){
+   //     //see if we should increment tasks
+   //     localStorage.code_stats = codewars_do(localStorage.code_user);
+   //     code_subs = JSON.parse(localStorage.code_stats);
+   //     localStorage.new_completed = code_subs['codeChallenges']['totalCompleted'];
+   //     console.log(localStorage.new_completed);
+   //     if (localStorage.new_completed > localStorage.old_completed){
+   //       diff = localStorage.new_completed - localStorage.old_completed;
+   //       hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name, direction: "up"};
+   //       //increment habit diff times
+   //       for (var i = 0; i < diff; i++){
+   //         localStorage.hab_goal[i] = habitica_do(hab_params, "change_habit");
+   //       }
+   //       //should check if any failed
+   //       localStorage.old_completed = localStorage.new_completed;
+   //     }
+   // }}, 30000)
  });
