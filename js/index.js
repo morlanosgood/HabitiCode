@@ -69,7 +69,7 @@ $(document).ready(function() {
        $.ajax({
         url:'habitica_data.php',
         data:{data_params: params, action: action},
-        async: false,
+        async: true,
         success: function(data){
             if(data == 'ERROR'){
                return_val = false;
