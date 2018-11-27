@@ -16,7 +16,7 @@ $(document).ready(function() {
                  $('#hab_output').fadeIn();
                  $('#hab_output').fadeOut(5000);
              }else{
-                 update_habitica_html(user_stats);
+                 // update_habitica_html(user_stats);
 
                  $('#hab_output').html('api info updated');
                  $('#hab_output').fadeIn();
@@ -111,19 +111,19 @@ $(document).ready(function() {
     }
 
 
-    //update site with user stats
-    function update_habitica_html(user_stats){
-       $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
-       $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
-       $('#hab_level').html(user_stats.habitRPGData.data.stats.lvl);
-
-       $('#hab_name').fadeIn();
-       $('#hab_class').fadeIn();
-       $('#hab_level').fadeIn();
-
-       $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
-       $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
-   }
+   //  //update site with user stats
+   //  function update_habitica_html(user_stats){
+   //     $('#hab_name').html(user_stats.habitRPGData.data.profile.name);
+   //     $('#hab_class').html(user_stats.habitRPGData.data.stats.class);
+   //     $('#hab_level').html(user_stats.habitRPGData.data.stats.lvl);
+   //
+   //     $('#hab_name').fadeIn();
+   //     $('#hab_class').fadeIn();
+   //     $('#hab_level').fadeIn();
+   //
+   //     $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
+   //     $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
+   // }
 
 //----------------------------------LEETCODE METHODS----------------------------
    // // when LeetCode Login Button clicked
