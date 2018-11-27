@@ -28,7 +28,7 @@ $habit = new Habitica($user_id, $api_tok);
 //         echo 'ERROR';
 //     }
 // }else
-if($action == 'get_stats'){
+// if($action == 'get_stats'){
     echo json_encode($habit->userStats());
-}
+// }
 ?>

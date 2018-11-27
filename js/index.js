@@ -65,7 +65,7 @@ $(document).ready(function() {
     //
     function habitica_do(params, action){
       console.log("habitica - start ajax call");
-      return_val = false;
+      return_val = true;
        $.ajax({
         url:'habitica_data.php',
         data:{data_params: params, action: action},
@@ -76,8 +76,8 @@ $(document).ready(function() {
             }else{
                 return_val = data;
             }
-            $('#user_id').val('');
-            $('#api_token').val('');
+            // $('#user_id').val('');
+            // $('#api_token').val('');
         }
        });
        return return_val;
