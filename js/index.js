@@ -10,7 +10,7 @@ $(document).ready(function() {
               hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok};
               localStorage.hab_stats = habitica_do(hab_params,"get_stats");
               user_stats = JSON.parse(localStorage.hab_stats);
-
+              console.log(user_stats);
               if(user_stats.error){
                  $('#hab_output').html(user_stats.error);
                  $('#hab_output').fadeIn();
@@ -87,6 +87,7 @@ $(document).ready(function() {
     //
     function habitica_do(params, action){
       console.log("habitica - start ajax call");
+      return_val = false;
        $.ajax({
         url:'habitica_data.php',
         data:{data_params: params, action: action},
