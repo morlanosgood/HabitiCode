@@ -98,7 +98,7 @@ $(document).ready(function() {
     // get_stats required variables: user_id (string), api_tok (string)
     function habitica_do(params, action){
       console.log("start habitica_do");
-      return_val = false;
+      //return_val = false;
       $.ajax({
        url:'habit_data.php',
        data:{data_params: params, action: action},
@@ -109,7 +109,7 @@ $(document).ready(function() {
               console.log(return_val);
            }else{
              return_val = data;
-             console.log(return_val);
+             return return_val;
            }
            $('#user_id').val('');
            $('#api_token').val('');
@@ -126,14 +126,14 @@ $(document).ready(function() {
        $.ajax({
         url:'codewars_data.php',
         data:{username: username},
-        async: true,
+        async: false,
         success: function(data){
             if(data == 'ERROR'){
                return_val = false;
-               console.log(return_val);
+            //   console.log(return_val);
             }else{
                 return_val = data;
-                console.log(return_val);
+                return return_val;
             }
         },
         error: function(data){
@@ -142,6 +142,7 @@ $(document).ready(function() {
         }
        });
        console.log("I have finished the ajax call - codewars");
+       console.log(return_val);
        return return_val;
     }
 
