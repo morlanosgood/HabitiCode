@@ -63,7 +63,6 @@ $(document).ready(function() {
             $('#code_output').fadeOut(5000);
             }
             event.preventDefault();
-       }
       });
 
       //when Goals button clicked
@@ -167,7 +166,7 @@ $(document).ready(function() {
            }
        }
       });
-      return = return_val;
+      return return_val;
     }
 
     //update site with user stats
