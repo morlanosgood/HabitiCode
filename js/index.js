@@ -109,7 +109,7 @@ $(document).ready(function() {
             //  console.log(return_val);
            }else{
              return_val = data;
-            // return return_val;
+             return return_val;
            }
            $('#user_id').val('');
            $('#api_token').val('');
