@@ -1,8 +1,7 @@
 $(document).ready(function() {
-  var popup;
         //when Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
-          console.log("submit registered")
+          console.log("submit registered");
           //store user id & api token
           if($('#user_id').val() && $('#api_token').val()){
               localStorage.hab_user_id  = $('#user_id').val();
@@ -97,9 +96,8 @@ $(document).ready(function() {
     // Object params depends on type of action. Currently two actions supported: "change_habit" | "get_stats"
     // change_habit required variables: task_name (string), direction ('up' | 'down'), user_id (string), api_tok (string)
     // get_stats required variables: user_id (string), api_tok (string)
-    //
     function habitica_do(params, action){
-      console.log("start habitica_do")
+      console.log("start habitica_do");
       return_val = false;
       $.ajax({
        url:'habit_data.php',
@@ -108,18 +106,17 @@ $(document).ready(function() {
        success: function(data){
            if(data == 'ERROR'){
               return_val = false;
+              console.log(return_val);
            }else{
-             console.log(data);
-               return_val = data;
+             return_val = data;
+             console.log(return_val);
            }
            $('#user_id').val('');
            $('#api_token').val('');
-
        }
       });
       return return_val;
    }
-
 
     // Gets Codewars submissions by calling leetcode_data.php, getting
     //  submissions and returning to submit button click
@@ -149,7 +146,7 @@ $(document).ready(function() {
     }
 
     function database_connect(){
-      console.log("start database_connect()")
+      console.log("start database_connect()");
       return_val = false;
       params = {hab_user: localStorage.hab_user_id, hab_key: localStorage.hab_api_tok, code_complete: localStorage.code_completed, code_goal: localStorage.num_completed, code_user: localStorage.code_user};
       $.ajax({
