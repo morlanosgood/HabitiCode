@@ -10,7 +10,7 @@ $(document).ready(function() {
               //make call to get info
               localStorage.hab_stats = habitica_do(hab_params,"get_stats");
               user_stats = JSON.parse(localStorage.hab_stats);
-              console.log(user_stats);
+            //  console.log(user_stats);
               //state if there is an error
               if(user_stats.error){
                  $('#hab_output').html(user_stats.error);
@@ -42,8 +42,8 @@ $(document).ready(function() {
             //make call to get info
             localStorage.code_stats = codewars_do(localStorage.code_user);
             code_subs = JSON.parse(localStorage.code_stats);
-            if(code_subs.error){
-               $('#code_output').html(user_stats.error);
+            if(code_subs.success == 'false'){
+               $('#code_output').html(code_subs.reason);
                $('#code_output').fadeIn();
                $('#code_output').fadeOut(5000);
             }else{
@@ -98,7 +98,7 @@ $(document).ready(function() {
     // get_stats required variables: user_id (string), api_tok (string)
     function habitica_do(params, action){
       console.log("start habitica_do");
-      return_val = false;
+      //return_val = false;
       $.ajax({
        url:'habitica_data.php',
        data:{data_params: params, action: action},
@@ -106,10 +106,8 @@ $(document).ready(function() {
        success: function(data){
            if(data == 'ERROR'){
               return_val = false;
-            //  console.log(return_val);
            }else{
              return_val = data;
-             return return_val;
            }
            $('#user_id').val('');
            $('#api_token').val('');
