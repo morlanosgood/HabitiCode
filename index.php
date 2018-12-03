@@ -54,8 +54,8 @@
                           <h5 class="btn btn-secondary" id="codewars_info_submit">Submit</h5>
                       </div>
                       <br>
-                      <!-- <h6>Problems Attempted Today: <span id="attempted"></span></h6>
-                      <h6>Problems Solved Today: <span id="solved"></span></h6> -->
+                      <h3 id="code_output" style="display:none"></h3>
+                      <h6>Challenges Currently Completed: <span id="code_completed"></span></h6>
                     <br>
                     <!-- <a href="/" class="btn btn-danger" id="logout">Reset All Data (logout)</a><br> -->
                 </div>
@@ -91,6 +91,8 @@
                     </div> -->
                   </div>
                   <h5 class="btn btn-secondary" id="update_submit">Submit</h5>
+                  <br>
+                    <h3 id="goals_output" style="display:none"></h3>
                   <br>
                     <h3 id="up_output" style="display:none"></h3>
                     <hr>
