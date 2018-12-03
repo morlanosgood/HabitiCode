@@ -8,31 +8,33 @@ $api_tok = $params['api_tok'];
 
 $habit = new Habitica($user_id, $api_tok);
 
-if($action == 'get_stats'){
-    echo json_encode($habit->userStats());
-}
-
-if ($action == 'check_habit') {
+  if ( $action == 'get_stats' )
+  {
+      echo json_encode($habit->userStats());
+  }
+  else if ( $action == 'check_habit' )
+  {
     //get taskId
     $task_name = $params['task_name'];
     $task_id = $habit->getTaskId($task_name);
 
     //if task not available, create it
-    if($task_id == 'No task found with that name'){
+    if($task_id == 'No task found with that name')
+    {
       $newTaskParams = array( 'type': 'habit', 'text': $task_name, 'note': 'This task was created with HabitiCode.');
       $task_id = $habit->newTask($newTaskParams);
     }
     echo $task_id;
-}
-
-if ($action == 'change_habit') {
-  // $dir = $params['direction'];
-  // if(($task_id != 'No task found with that name') && ($dir == 'up' || $dir == 'down')){
-  //     $params = array('taskId'=>$task_id,'direction'=>$dir);
-  //     $rval = $habit->taskScoring($params);
-  //     echo json_encode($rval);
-  // }else{
-  //     echo 'ERROR';
-  // }
-}
+  }
+  else if ( $action == 'change_habit' )
+  {
+    // $dir = $params['direction'];
+    // if(($task_id != 'No task found with that name') && ($dir == 'up' || $dir == 'down')){
+    //     $params = array('taskId'=>$task_id,'direction'=>$dir);
+    //     $rval = $habit->taskScoring($params);
+    //     echo json_encode($rval);
+    // }else{
+    //     echo 'ERROR';
+    // }
+  }
 ?>
