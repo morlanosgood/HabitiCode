@@ -10,7 +10,9 @@ $habit = new Habitica($user_id, $api_tok);
 
 if($action == 'get_stats'){
     echo json_encode($habit->userStats());
-} elseif ($action == 'check_habit') {
+}
+
+if ($action == 'check_habit') {
     //get taskId
     $task_name = $params['task_name'];
     $task_id = $habit->getTaskId($task_name);
@@ -20,8 +22,10 @@ if($action == 'get_stats'){
       $newTaskParams = array( 'type': 'habit', 'text': $task_name, 'note': 'This task was created with HabitiCode.');
       $task_id = $habit->newTask($newTaskParams);
     }
-    echo $task_id
-} elseif ($action == 'change_habit') {
+    echo $task_id;
+}
+
+if ($action == 'change_habit') {
   // $dir = $params['direction'];
   // if(($task_id != 'No task found with that name') && ($dir == 'up' || $dir == 'down')){
   //     $params = array('taskId'=>$task_id,'direction'=>$dir);
@@ -31,5 +35,4 @@ if($action == 'get_stats'){
   //     echo 'ERROR';
   // }
 }
-
 ?>
