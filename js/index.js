@@ -98,23 +98,24 @@ $(document).ready(function() {
     // get_stats required variables: user_id (string), api_tok (string)
     function habitica_do(params, action){
       console.log("start habitica_do");
-      //return_val = false;
+      return_val = false;
       $.ajax({
-       url:'habit_data.php',
+       url:'habitica_data.php',
        data:{data_params: params, action: action},
        async: false,
        success: function(data){
            if(data == 'ERROR'){
               return_val = false;
-              console.log(return_val);
+            //  console.log(return_val);
            }else{
              return_val = data;
-             return return_val;
+            // return return_val;
            }
            $('#user_id').val('');
            $('#api_token').val('');
        }
-      });
+     });
+      console.log(return_val);
       return return_val;
    }
 
