@@ -69,7 +69,7 @@ $(document).ready(function() {
         //keep track of goal values
         localStorage.num_complete = $('#completed_value').val(); // int
         localStorage.track_complete = $('#track_complete').val(); //bool
-        localStorage.task_name = "Codewars - complete " + num_complete + "challenges";
+        localStorage.task_name = "Codewars - complete " + localStorage.num_complete + "challenges";
         //Have both CodeWars and Habitica Info that is valid
         if(localStorage.code_is_valid && localStorage.hab_is_valid){
           //make call to get info
@@ -106,7 +106,6 @@ $(document).ready(function() {
        success: function(data){
            if(data == 'ERROR'){
               return_val = false;
-            //  console.log(return_val);
            }else{
              return_val = data;
              return return_val;
@@ -119,7 +118,6 @@ $(document).ready(function() {
          console.log(data);
        }
      });
-      console.log(return_val);
       return return_val;
    }
 
