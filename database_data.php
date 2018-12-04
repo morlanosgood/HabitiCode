@@ -13,14 +13,15 @@ if(!$conn){
   exit;
 }
 //get user's record
-$result = pg_query($conn, "SELECT goal_num FROM users WHERE $hab_user = habitica_id");
+$result = pg_query($conn, "SELECT codewars_goal FROM users WHERE $hab_user = habitica_id");
 //either there is no record or the call didn't work
 if  (!$result) {
  echo "query did not execute";
+ exit;
 }
 //record does not exist, so create record
 if (pg_num_rows($result) == 0) {
-  $res = pg_query($conn, "INSERT INTO users (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, updated) VALUES ($hab_user, $hab_key, $code_user, $code_complete, $code_goal, time())");
+  $res = pg_query($conn, "INSERT INTO users (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, updated, isValid) VALUES ($hab_user, $hab_key, $code_user, $code_complete, $code_goal, time(), true)");
   if(!$res){
     //Insert failed
     echo "insert failed";
