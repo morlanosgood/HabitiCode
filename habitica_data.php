@@ -20,6 +20,15 @@ if($action == 'change_habit'){
     }else{
         echo 'ERROR';
     }
+}else if($action == 'check_habit'){
+    $taskName = $params['task_name'];
+    $task_id = $habit->getTaskId($taskName);
+    if($task_id == 'No task found with that name')
+      {
+        $newTaskParams = array( 'type': 'habit', 'text': $taskName, 'note': 'This task was created with HabitiCode.');
+        $task_id = $habit->newTask($newTaskParams);
+      }
+      echo $task_id;
 }else if($action == 'get_stats'){
     echo json_encode($habit->userStats());
 }
