@@ -80,8 +80,8 @@ $(document).ready(function() {
           //Comunicate with database
           res = database_connect();
           //tell users they are all set
-          $('#goals_output').html('values updated. HabitiCode will now update hourly.');
-          $('#goals_output').fadeIn();
+        //  $('#goals_output').html('values updated. HabitiCode will now update hourly.');
+        //  $('#goals_output').fadeIn();
         }else if (!localStorage.code_is_valid){
           $('#goals_output').html('please provide a valid CodeWars Username and then try again.');
           $('#goals_output').fadeIn();

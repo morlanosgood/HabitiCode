@@ -13,8 +13,8 @@ if(!$conn){
   exit;
 }
 //get user's record
-$query = "SELECT codewars_goal FROM users WHERE habitica_id = '$hab_user'";
-
+$query = "SELECT codewars_goal FROM user WHERE habitica_id = '$hab_user'";
+$quer = "SELECT * FROM users";
 // // Prepare a query for execution
 // $result = pg_prepare($conn, "my_query", $query);
 //
