@@ -27,6 +27,7 @@ $quer = "SELECT * FROM user";
 
 $result = pg_query($conn, $quer);
 echo $result;
+echo pg_fetch_result($result, 0, 'codewars_goal');
 //either there is no record or the call didn't work
 if  (!$result) {
  echo "query did not execute";
