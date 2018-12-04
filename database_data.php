@@ -14,7 +14,7 @@ if(!$conn){
 }
 //get user's record
 $query = "SELECT codewars_goal FROM user WHERE habitica_id = f197b82c-2a28-4206-b5e3-39874291527f";
-$quer = "SELECT * FROM user";
+$quer = "SELECT * FROM user WHERE  habitica_id = f197b82c-2a28-4206-b5e3-39874291527f;";
 // // Prepare a query for execution
 // $result = pg_prepare($conn, "my_query", $query);
 //
@@ -24,7 +24,7 @@ $quer = "SELECT * FROM user";
 
 
 $result = pg_query($conn, $quer);
-echo pg_fetch_result($result, 0, 'codewars_goal');
+echo $result;
 //either there is no record or the call didn't work
 if  (!$result) {
  echo "query did not execute";
