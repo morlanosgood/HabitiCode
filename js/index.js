@@ -75,7 +75,8 @@ $(document).ready(function() {
           //make call to get info
           hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name};
           localStorage.check_hab = habitica_do(hab_params,"check_habit");
-          task_id = JSON.parse(localStorage.check_hab);
+          console.log(localStorage.check_hab);
+          //task_id = JSON.parse(localStorage.check_hab);
           //Comunicate with database
           res = database_connect();
           //tell users they are all set
@@ -163,7 +164,7 @@ $(document).ready(function() {
               console.log(data);
            }else{
              console.log(data);
-               return_val = data;
+             return_val = data;
            }
        }
       });
