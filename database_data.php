@@ -13,17 +13,17 @@ if(!$conn){
   exit;
 }
 //get user's record
-$query = "SELECT codewars_goal FROM users WHERE habitica_id = $1";
+$query = "SELECT codewars_goal FROM users WHERE habitica_id = '$hab_user'";
 
-// Prepare a query for execution
-$result = pg_prepare($conn, "my_query", $query);
+// // Prepare a query for execution
+// $result = pg_prepare($conn, "my_query", $query);
+//
+// // Execute the prepared query.  Note that it is not necessary to escape
+// // the string "Joe's Widgets" in any way
+// $result = pg_execute($conn, "my_query", array($hab_user));
 
-// Execute the prepared query.  Note that it is not necessary to escape
-// the string "Joe's Widgets" in any way
-$result = pg_execute($conn, "my_query", array($hab_user));
 
-
-//$result = pg_query($conn, "SELECT codewars_goal FROM users WHERE habitica_id = $hab_user);
+$result = pg_query($conn, $query);
 //either there is no record or the call didn't work
 if  (!$result) {
  echo "query did not execute";
