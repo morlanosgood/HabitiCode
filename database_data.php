@@ -13,8 +13,8 @@ if(!$conn){
   exit;
 }
 //get user's record
-$query = "SELECT codewars_goal FROM user WHERE habitica_id = '$hab_user'";
-$quer = "SELECT * FROM users";
+$query = "SELECT codewars_goal FROM user WHERE habitica_id = f197b82c-2a28-4206-b5e3-39874291527f";
+$quer = "SELECT * FROM user";
 // // Prepare a query for execution
 // $result = pg_prepare($conn, "my_query", $query);
 //
@@ -23,7 +23,8 @@ $quer = "SELECT * FROM users";
 // $result = pg_execute($conn, "my_query", array($hab_user));
 
 
-$result = pg_query($conn, $query);
+$result = pg_query($conn, $quer);
+echo $result;
 //either there is no record or the call didn't work
 if  (!$result) {
  echo "query did not execute";
@@ -31,7 +32,7 @@ if  (!$result) {
 }
 //record does not exist, so create record
 if (pg_num_rows($result) == 0) {
-  $res = pg_query($conn, "INSERT INTO users (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, updated, isValid) VALUES ($hab_user, $hab_key, $code_user, $code_complete, $code_goal, time(), true)");
+  $res = pg_query($conn, "INSERT INTO user (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, updated, isValid) VALUES ($hab_user, $hab_key, $code_user, $code_complete, $code_goal, time(), true)");
   if(!$res){
     //Insert failed
     echo "insert failed";
