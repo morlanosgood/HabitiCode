@@ -14,7 +14,7 @@ if(!$conn){
 }
 //get user's record
 $query = "SELECT codewars_goal FROM user WHERE habitica_id = f197b82c-2a28-4206-b5e3-39874291527f";
-$quer = "SELECT * FROM user WHERE codewars_username = 'morlano'";
+$quer = "SELECT * FROM user";
 
 
 // // Prepare a query for execution
