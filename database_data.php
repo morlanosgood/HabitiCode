@@ -15,7 +15,7 @@ $password = "8752574ba71f85fc1023ab2befdd370ac7ad6c9c4c3e204a1055dd425cbbd01d";
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password connect_timeout=5") or die("could not connect to server");
 //get user's record
 //$query = "SELECT codewars_goal FROM user WHERE habitica_id = $hab_user";
-$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = '$1'";
+$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = $1";
 
 $result = pg_query_params($conn, $quer, array($hab_user)) or die("could not complete call");
 //$result = pg_query($conn, $quer) or die("could not complete call");
