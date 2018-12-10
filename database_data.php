@@ -14,15 +14,14 @@ $password = "8752574ba71f85fc1023ab2befdd370ac7ad6c9c4c3e204a1055dd425cbbd01d";
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password connect_timeout=5") or die("could not connect to server");
 //get user's record
-//$query = "SELECT codewars_goal FROM user WHERE habitica_id = $hab_user";
-$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = $1";
 
-$result = pg_query_params($conn, $quer, array($hab_user)) or die("could not complete call");
-//$result = pg_query($conn, $quer) or die("could not complete call");
-// while ($row = pg_fetch_row($result)) {
-//   echo "$row[0] $row[1] $row[2]\n";
-// }
-echo pg_fetch_result($result, 0, 'codewars_goal');
+$query = "SELECT codewars_goal FROM public.user WHERE habitica_id = $1";
+//$result = pg_query_params($conn, $query, array($hab_user)) or die("could not complete call");
+$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = 'him'";
+$result = pg_query($conn, $quer) or die("could not complete call");
+
+echo pg_fetch_result($result, 0, 'codewars_goal') . "\n";
+echo pg_num_rows($result) . "rows returned";
 pg_close($conn);
 
 // // Prepare a query for execution
