@@ -32,14 +32,6 @@ if (pg_num_rows($result) == 0) {
 //echo pg_fetch_result($result, 0, 'codewars_goal') . "\n";
 pg_close($conn);
 
-// // Prepare a query for execution
-// $result = pg_prepare($conn, "my_query", $query);
-//
-// // Execute the prepared query.  Note that it is not necessary to escape
-// // the string "Joe's Widgets" in any way
-// $result = pg_execute($conn, "my_query", array($hab_user));
-
-
 
 
 // // echo $result;

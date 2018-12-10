@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  var hab_is_valid = false;
-  var code_is_valid = false;
+  localStorage.hab_is_valid = false;
+  localStorage.code_is_valid = false;
         //when Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered");
@@ -21,7 +21,7 @@ $(document).ready(function() {
              }else{
                //show info to user
                  update_habitica_html(user_stats);
-                 hab_is_valid = true;
+                 localStorage.hab_is_valid = true;
                  $('#hab_output').html('api info updated');
                  $('#hab_output').fadeIn();
                  $('#hab_output').fadeOut(5000);
@@ -51,7 +51,7 @@ $(document).ready(function() {
             }else{
              //show info to user
               localStorage.code_completed = code_subs.codeChallenges.totalCompleted;
-              code_is_valid = true;
+              localStorage.code_is_valid = true;
                $('#code_output').html('api info updated');
                $('#code_output').fadeIn();
                $('#code_output').fadeOut(5000);
@@ -74,7 +74,7 @@ $(document).ready(function() {
         localStorage.track_complete = $('#track_complete').val(); //bool
         localStorage.task_name = "Codewars - complete " + localStorage.num_complete + " challenges";
         //Have both CodeWars and Habitica Info that is valid
-        if(code_is_valid && hab_is_valid){
+        if(localStorage.code_is_valid && localStorage.hab_is_valid){
           //make call to get info
           hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name};
           localStorage.check_hab = habitica_do(hab_params,"check_habit");
@@ -84,11 +84,11 @@ $(document).ready(function() {
           //tell users they are all set
         //  $('#goals_output').html('values updated. HabitiCode will now update hourly.');
         //  $('#goals_output').fadeIn();
-      }else if (!code_is_valid){
+      }else if (!localStorage.code_is_valid){
           $('#goals_output').html('please provide a valid CodeWars Username and then try again.');
           $('#goals_output').fadeIn();
           $('#goals_output').fadeOut(5000);
-      }else if (!hab_is_valid){
+      }else if (!localStorage.hab_is_valid){
           $('#goals_output').html('please provide valid Habitica values and then try again');
           $('#goals_output').fadeIn();
           $('#goals_output').fadeOut(5000);
