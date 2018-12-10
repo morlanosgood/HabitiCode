@@ -13,15 +13,23 @@ $user = "wcfbtrldbhrczk";
 $password = "8752574ba71f85fc1023ab2befdd370ac7ad6c9c4c3e204a1055dd425cbbd01d";
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password connect_timeout=5") or die("could not connect to server");
+
 //get user's record
-
 $query = "SELECT codewars_goal FROM public.user WHERE habitica_id = $1";
-//$result = pg_query_params($conn, $query, array($hab_user)) or die("could not complete call");
-$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = 'him'";
-$result = pg_query($conn, $quer) or die("could not complete call");
+$result = pg_query_params($conn, $query, array($hab_user)) or die("select query failed");
 
-echo pg_fetch_result($result, 0, 'codewars_goal') . "\n";
-echo pg_num_rows($result) . "rows returned";
+//record does not exist, so create record
+if (pg_num_rows($result) == 0) {
+  echo "record does not exist. will add now \n";
+  $query = "INSERT INTO public.user (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, is_valid) VALUES ($1, $2, $3, $4, $5, $6)";
+  $arr = array($hab_user, $hab_key, $code_user, $code_complete, $code_goal, 'true');
+  $res = pg_query_params($conn, $query, $arr) or die("insert failed");
+}
+
+ //$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = 'him'";
+// $result = pg_query($conn, $quer) or die("could not complete call");
+
+//echo pg_fetch_result($result, 0, 'codewars_goal') . "\n";
 pg_close($conn);
 
 // // Prepare a query for execution
@@ -41,14 +49,7 @@ pg_close($conn);
 //  echo "query did not execute";
 //  exit;
 // }
-// //record does not exist, so create record
-// if (pg_num_rows($result) == 0) {
-//   $res = pg_query($conn, "INSERT INTO user (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, updated, isValid) VALUES ($hab_user, $hab_key, $code_user, $code_complete, $code_goal, time(), true)");
-//   if(!$res){
-//     //Insert failed
-//     echo "insert failed";
-//     exit;
-//   }
+
 // }else { //check if need to update goal#
 //    $goal = pg_fetch_result($result, 0, 'codewars_goal');
 //    if ($goal != $code_goal){
