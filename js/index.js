@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  var hab_is_valid = false;
+  var code_is_valid = false;
         //when Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered");
@@ -19,7 +21,7 @@ $(document).ready(function() {
              }else{
                //show info to user
                  update_habitica_html(user_stats);
-                 localStorage.hab_is_valid = true;
+                 hab_is_valid = true;
                  $('#hab_output').html('api info updated');
                  $('#hab_output').fadeIn();
                  $('#hab_output').fadeOut(5000);
@@ -49,7 +51,7 @@ $(document).ready(function() {
             }else{
              //show info to user
               localStorage.code_completed = code_subs.codeChallenges.totalCompleted;
-              localStorage.code_is_valid = true;
+              code_is_valid = true;
                $('#code_output').html('api info updated');
                $('#code_output').fadeIn();
                $('#code_output').fadeOut(5000);
@@ -68,15 +70,15 @@ $(document).ready(function() {
       $("#update_submit").click(function( event ) {
         //keep track of goal values
         localStorage.num_complete = $('#completed_value').val(); // int
+        console.log(localStorage.num_complete);
         localStorage.track_complete = $('#track_complete').val(); //bool
-        localStorage.task_name = "Codewars - complete " + localStorage.num_complete + "challenges";
+        localStorage.task_name = "Codewars - complete " + localStorage.num_complete + " challenges";
         //Have both CodeWars and Habitica Info that is valid
-        if(localStorage.code_is_valid && localStorage.hab_is_valid){
+        if(code_is_valid && hab_is_valid){
           //make call to get info
           hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name};
           localStorage.check_hab = habitica_do(hab_params,"check_habit");
           console.log(localStorage.check_hab);
-          //task_id = JSON.parse(localStorage.check_hab);
           //Comunicate with database
           res = database_connect();
           //tell users they are all set
@@ -134,7 +136,6 @@ $(document).ready(function() {
         success: function(data){
             if(data == 'ERROR'){
                return_val = false;
-            //   console.log(return_val);
             }else{
                 return_val = data;
                 return return_val;
@@ -153,7 +154,7 @@ $(document).ready(function() {
     function database_connect(){
       console.log("start database_connect()");
       return_val = false;
-      params = {hab_user: localStorage.hab_user_id, hab_key: localStorage.hab_api_tok, code_complete: localStorage.code_completed, code_goal: localStorage.num_completed, code_user: localStorage.code_user};
+      params = {hab_user: localStorage.hab_user_id, hab_key: localStorage.hab_api_tok, code_complete: localStorage.code_completed, code_goal: localStorage.num_complete, code_user: localStorage.code_user};
       $.ajax({
        url:'database_data.php',
        data:{data_params: params},
