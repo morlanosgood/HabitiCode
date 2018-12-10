@@ -21,7 +21,7 @@ $result = pg_query($conn, $quer) or die("could not complete call");
 // while ($row = pg_fetch_row($result)) {
 //   echo "$row[0] $row[1] $row[2]\n";
 // }
-echo $result;
+echo pg_fetch_result($result, 0, 'codewars_goal');
 pg_close($conn);
 
 // // Prepare a query for execution
