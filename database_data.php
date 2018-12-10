@@ -18,9 +18,10 @@ $query = "SELECT codewars_goal FROM user WHERE habitica_id = $hab_user";
 $quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = 'hi'";
 
 $result = pg_query($conn, $quer) or die("could not complete call");
-while ($row = pg_fetch_row($result)) {
-  echo "$row[0] $row[1] $row[2]\n";
-}
+// while ($row = pg_fetch_row($result)) {
+//   echo "$row[0] $row[1] $row[2]\n";
+// }
+echo $result;
 pg_close($conn);
 
 // // Prepare a query for execution
