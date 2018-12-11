@@ -28,9 +28,9 @@ if (pg_num_rows($result) == 0) {
 }
 // update goal # if necessary
 else {
-  echo "record already exists \n";
+  echo "record already exists\n";
    $goal = pg_fetch_result($result, 0, 'codewars_goal');
-   echo $goal . "current goal";
+   echo $goal . " current goal\n";
    if ($goal != $code_goal){
      echo "goals are not equal. current goal: " . $goal . " vs inputted goal: " . $code_goal . "\n";
      //update goal value in database
