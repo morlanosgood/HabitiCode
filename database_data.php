@@ -24,36 +24,19 @@ if (pg_num_rows($result) == 0) {
   $query = "INSERT INTO public.user (habitica_id, habitica_key, codewars_username, codewars_completed, codewars_goal, is_valid) VALUES ($1, $2, $3, $4, $5, $6)";
   $arr = array($hab_user, $hab_key, $code_user, $code_complete, $code_goal, 'true');
   $res = pg_query_params($conn, $query, $arr) or die("insert failed");
+  echo "record successfully inserted\n";
 }
-
- //$quer = "SELECT codewars_goal FROM public.user WHERE habitica_id = 'him'";
-// $result = pg_query($conn, $quer) or die("could not complete call");
-
-//echo pg_fetch_result($result, 0, 'codewars_goal') . "\n";
+// update goal # if necessary
+else {
+   $goal = pg_fetch_result($result, 0, 'codewars_goal');
+   if ($goal != $code_goal){
+     //update goal value in database
+     $query = "UPDATE public.user SET codewars_goal = $1 WHERE habitica_id = $2";
+     $arr = array($code_goal, $hab_user);
+     $res = pg_query($conn, $query, $arr) or die("goal update failed");
+     echo "goal update successful.\n";
+   }
+}
 pg_close($conn);
-
-
-
-// // echo $result;
-// // echo pg_fetch_result($result, 0, 'codewars_goal');
-// //either there is no record or the call didn't work
-// if  (!$result) {
-//  echo "query did not execute";
-//  exit;
-// }
-
-// }else { //check if need to update goal#
-//    $goal = pg_fetch_result($result, 0, 'codewars_goal');
-//    if ($goal != $code_goal){
-//      //update goal value in database
-//      $res = pg_query($conn, "UPDATE users SET codewars_goal = $code_goal WHERE $hab_user = habitica_id");
-//      if(!$res){
-//        //goal update failed
-//        echo "goal update failed";
-//        exit;
-//      }
-//    }
-// }
-
-//echo "success";
+echo "db call done";
 ?>
