@@ -28,12 +28,15 @@ if (pg_num_rows($result) == 0) {
 }
 // update goal # if necessary
 else {
+  echo "record already exists \n";
    $goal = pg_fetch_result($result, 0, 'codewars_goal');
+   echo $goal . "current goal";
    if ($goal != $code_goal){
+     echo "goals are not equal. current goal: " . $goal . " vs inputted goal: " . $code_goal . "\n";
      //update goal value in database
      $query = "UPDATE public.user SET codewars_goal = $1 WHERE habitica_id = $2";
      $arr = array($code_goal, $hab_user);
-     $res = pg_query($conn, $query, $arr) or die("goal update failed");
+     $res = pg_query_params($conn, $query, $arr) or die("goal update failed");
      echo "goal update successful.\n";
    }
 }
