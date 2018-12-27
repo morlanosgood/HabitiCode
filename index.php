@@ -19,6 +19,7 @@
               <br>
               <h5 class="text-lavender text-center"> Our goal is to make technical interview preparation more engaging by enabling users to easily gamify the process. HabitiCode will connect Habitica with Codewars to create and update goals in Habitica that will earn you points. By following the directions below, you will be auto-awarded coins in Habitica for your progress in Codewars.</h5>
             </div>
+              <h5 class="btn btn-secondary" id="test_scheduler">Test Scheduler</h5>
             <div class="col bg-purple"></div>
           </div>
           <!-- Directions Row -->

@@ -1,6 +1,28 @@
 $(document).ready(function() {
   localStorage.hab_is_valid = false;
   localStorage.code_is_valid = false;
+
+        //testing scheduler
+        $("#test_scheduler").click(function( event ) {
+          $.ajax({
+           url:'scheduler.php',
+           async: false,
+           success: function(data){
+               if(data == 'ERROR'){
+                  return_val = false;
+               }else{
+                 return_val = data;
+                 return return_val;
+               }
+           },
+           error: function(data){
+             console.log("ERROR WITH AJAX CALL");
+             console.log(data);
+           }
+         });
+          return return_val;
+        });
+
         //when Habitica Submit Button clicked
         $("#habitica_info_submit").click(function( event ) {
           console.log("submit registered");
@@ -185,77 +207,4 @@ $(document).ready(function() {
        $('#hab_xp_bar').css("width",(user_stats.habitRPGData.data.stats.exp/user_stats.habitRPGData.data.stats.toNextLevel)*100 + "%");
        $('#hab_xp_prog').html(user_stats.habitRPGData.data.stats.exp + "/" + user_stats.habitRPGData.data.stats.toNextLevel);
    }
-
-//----------------------------------LEETCODE METHODS----------------------------
-   // // when LeetCode Login Button clicked
-   // $("#login").click(function( event ) {
-   //      	popup = window.open("https://leetcode.com/accounts/login", "", "width=500,height=500");
-   //        console.log("I've hit the leetcode url");
-   //        console.log(popup.location.href);
-   //        console.log(typeof popup);
-   //        console.log(popup.closed);
-   //        checkPopup();
-   //      });
-
-
-    // // Gets LeetCode submissions by calling leetcode_data.php, getting
-    // //  submissions and returning to submit button click
-    // function leetcode_do(){
-    //   console.log("leetcode - start ajax call");
-    //    return_val = false;
-    //    $.ajax({
-    //     url:'leetcode_data.php',
-    //     // data:{data_params: params},
-    //     async: true,
-    //     success: function(data){
-    //         if(data == 'ERROR'){
-    //            return_val = false;
-    //            console.log(return_val);
-    //         }else{
-    //             return_val = data;
-    //             console.log(return_val);
-    //         }
-    //         $('#user_id').val('');
-    //         $('#api_token').val('');
-    //     },
-    //     error: function(data){
-    //       console.log("ERROR WITH AJAX CALL");
-    //       console.log(data);
-    //     }
-    //    });
-    //    console.log("I have finished the ajax call");
-    // }
-
-
-   // //Get's Popup window's status
-   // function checkPopup() {
-   //     if(popup.closed) {
-   //         console.log("the popup has closed");
-   //         leetcode_do();
-   //     } else {
-   //       window.setTimeout(checkPopup, 1000);
-   //       console.log("the popup is open");
-   //     }
-   // }
-
-   // //repeat while window is open!
-   // window.setInterval(function(){
-   //   //check that all necessary data is inputted
-   //   if (localStorage.hab_user_id && localStorage.hab_api_tok && localStorage.task_name && localStorage.code_user){
-   //     //see if we should increment tasks
-   //     localStorage.code_stats = codewars_do(localStorage.code_user);
-   //     code_subs = JSON.parse(localStorage.code_stats);
-   //     localStorage.new_completed = code_subs['codeChallenges']['totalCompleted'];
-   //     console.log(localStorage.new_completed);
-   //     if (localStorage.new_completed > localStorage.old_completed){
-   //       diff = localStorage.new_completed - localStorage.old_completed;
-   //       hab_params = {user_id: localStorage.hab_user_id, api_tok: localStorage.hab_api_tok, task_name: localStorage.task_name, direction: "up"};
-   //       //increment habit diff times
-   //       for (var i = 0; i < diff; i++){
-   //         localStorage.hab_goal[i] = habitica_do(hab_params, "change_habit");
-   //       }
-   //       //should check if any failed
-   //       localStorage.old_completed = localStorage.new_completed;
-   //     }
-   // }}, 30000)
  });
